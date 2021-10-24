@@ -23,5 +23,12 @@
         "app": {
             "title": "Grip Simulator"
         }
-    }
+    },
+    "client_config_props": [
+        "authors",
+        "device_ids",
+        "virtualpin_count",
+        "virtualpin_value_init",
+        "virtualpin_topic"
+    ]
 }

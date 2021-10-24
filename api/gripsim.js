@@ -78,8 +78,10 @@ utils = {
     filename_remove_extension: (filename_with_extension) => {
         return path.basename(filename_with_extension, path.extname(filename_with_extension));
     },
-    merge_objects: (objA, objB) => {
-        return { ...objA, ...objB, };
+    merge_objects: (objA, objB, objC = null) => {
+        if (objC == null)
+            return { ...objA, ...objB };
+        return { ...objA, ...objB, ...objC };
     }
 };
 
@@ -183,6 +185,25 @@ web = {
             message: msg
         }, null, 2));
     },
+    ejs_utils: {
+        export_client_config: _ => {
+            var client_config = {};
+            for (var p in global.config.client_config_props) {
+                var key = global.config.client_config_props[p];
+                if (global.config.hasOwnProperty(key)) {
+                    client_config[key] = global.config[key];
+                }
+            }
+            return JSON.stringify(client_config);
+        },
+    },
+    compile_view_env: (view_id) => {
+        return utils.merge_objects(
+            web.ejs_utils,
+            db.api.get_view_env('global'),
+            db.api.get_view_env(view_id)
+        );
+    },
     init: (resolve) => {
         web.log("initializing");
         web.express_api = express();
@@ -193,7 +214,7 @@ web = {
         web.express_api.use(web.cors);
         web.express_api.use(express.static("static"));
         web.express_api.get("/", (req, res) => {
-            res.render('app', utils.merge_objects(db.api.get_view_env('global'), db.api.get_view_env('app')));
+            res.render('app', web.compile_view_env('app'));
         });
         web.express_api.listen(global.http_port, _ => {
             web.log("listening on", global.http_port);

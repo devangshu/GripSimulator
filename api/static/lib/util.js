@@ -5,7 +5,7 @@ var util = {
     mobile: _ => {
         return jQuery.browser.mobile;
     },
-    is = { // match types
+    is: { // match types
         null: function (v) { return (v == null); },
         eqnull: function (v) { return (v === null); },
         undef: function (v) { return (v == undefined); },
