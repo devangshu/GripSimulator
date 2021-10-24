@@ -1,0 +1,18 @@
+{
+    "http_port": 3026,
+    "ws_port": 3027,
+    "mqtt_broker_url": "mqtt.anuv.me:1883",
+    "mqtt_publisher_client_id": "gripsim_445l_publisher",
+    "secret": "994dc8440a6b8c0627ca035f44b39d7a8eeddc76084b49d797976e32eaac3dfd",
+    "defaults": {
+        "esp_client_type": "mqtt",
+        "esp_mqtt_client_id": "gripsim_445l_client",
+        "virtualpin_topics": [
+            "virtual_pin_0",
+            "virtual_pin_1",
+            "virtual_pin_2",
+            "virtual_pin_3",
+            "virtual_pin_4"
+        ]
+    }
+}
