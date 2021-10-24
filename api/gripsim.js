@@ -74,6 +74,12 @@ utils = {
                 return false;
         }
         return true;
+    },
+    filename_remove_extension: (filename_with_extension) => {
+        return path.basename(filename_with_extension, path.extname(filename_with_extension));
+    },
+    merge_objects: (objA, objB) => {
+        return { ...objA, ...objB, };
     }
 };
 
@@ -90,57 +96,58 @@ db = {
             return db.local.device[device_id].esp_ws_client_id;
         },
         get_virtualpin_topic: (vp_num) => {
-            return db.local.virtualpin[`vp${vp_num}`].topic;
+            return db.local.virtualpin[vp_num].topic;
         },
         get_virtualpin_value: (vp_num) => {
-            return db.local.virtualpin[`vp${vp_num}`].value;
+            return db.local.virtualpin[vp_num].value;
         },
         set_virtualpin_value: (vp_num, value) => {
-            db.local.virtualpin[`vp${vp_num}`].value = value;
+            db.local.virtualpin[vp_num].value = value;
         },
         virtualpin_count: _ => {
-            return Object.keys(db.local.virtualpin).length;
+            return db.local.virtualpin.length;
         },
+        get_view_env: (view_id) => {
+            return db.local.view_env[view_id];
+        }
     },
-    local: {},
+    local: {
+        device: {},
+        virtualpin: [],
+        view_env: {}
+    },
     init: (resolve) => {
         db.log("initializing");
-        db.local = {
-            device: {
-                deviceA: {
-                    esp_client_type: global.config.defaults.esp_client_type,
-                    esp_ws_client_id: null,
-                    esp_mqtt_client_id: `${global.config.defaults.esp_mqtt_client_id}_deviceA`
-                },
-                deviceB: {
-                    esp_client_type: global.config.defaults.esp_client_type,
-                    esp_ws_client_id: null,
-                    esp_mqtt_client_id: `${global.config.defaults.esp_mqtt_client_id}_deviceB`
+        global.config.device_ids.forEach((device_id, d) => {
+            db.local.device[device_id] = {
+                id: device_id, _id: d,
+                esp_client_type: global.config.esp_client_type_default,
+                esp_ws_client_id: null,
+                esp_mqtt_client_id: `${global.config.esp_mqtt_client_id}_device${d}_${device_id}`
+            };
+        });
+        for (var i = 0; i < global.config.virtualpin_count; i++) {
+            db.local.virtualpin[i] = {
+                id: `vp${i}`, _id: i,
+                topic: `${global.config.virtualpin_topic}_${i}`,
+                value: global.config.virtualpin_value_init
+            };
+        }
+        for (var view_id in global.config.view_env) {
+            db.local.view_env[view_id] = {};
+            for (var key in global.config.view_env[view_id]) {
+                var value = global.config.view_env[view_id][key];
+                if (typeof value === 'string' && value[0] == '_' && value[1] == '_') {
+                    value = global.config[value.substring(2)];
                 }
-            },
-            virtualpin: {
-                vp0: {
-                    topic: global.config.defaults.virtualpin_topics[0],
-                    value: 0
-                },
-                vp1: {
-                    topic: global.config.defaults.virtualpin_topics[1],
-                    value: 0
-                },
-                vp2: {
-                    topic: global.config.defaults.virtualpin_topics[2],
-                    value: 0
-                },
-                vp3: {
-                    topic: global.config.defaults.virtualpin_topics[3],
-                    value: 0
-                },
-                vp4: {
-                    topic: global.config.defaults.virtualpin_topics[4],
-                    value: 0
-                },
+                db.local.view_env[view_id][key] = value;
             }
-        };
+        }
+        fs.readdirSync('views').forEach(file_name => {
+            view_id = utils.filename_remove_extension(file_name);
+            if (!db.local.view_env.hasOwnProperty(view_id))
+                db.local.view_env[view_id] = {};
+        });
         if (resolve) resolve();
     },
     log: utils.logger('db'),
@@ -186,7 +193,7 @@ web = {
         web.express_api.use(web.cors);
         web.express_api.use(express.static("static"));
         web.express_api.get("/", (req, res) => {
-            res.render('app');
+            res.render('app', utils.merge_objects(db.api.get_view_env('global'), db.api.get_view_env('app')));
         });
         web.express_api.listen(global.http_port, _ => {
             web.log("listening on", global.http_port);
@@ -225,6 +232,7 @@ ws = {
                 ws.log(`client ${client.id} – identified as device ${req.device_id}`);
                 db.api.set_device_ws_client_id(req.device_id, client.id);
                 client.auth = true;
+                client.type = "device";
                 ws.send_to_device_client("identify", true, client);
             } else ws.send_to_device_client("identify", false, client);
         }, false);
@@ -262,7 +270,8 @@ ws = {
             if (
                 ws.clients.hasOwnProperty(c_id) &&
                 ws.clients[c_id] !== null &&
-                ws.clients[c_id].auth
+                ws.clients[c_id].auth &&
+                ws.clients[c_id].type != "device"
             ) {
                 ws.clients[c_id].socket.send(ws.encode_msg(event, data));
             }
@@ -275,7 +284,8 @@ ws = {
                 ws.clients.hasOwnProperty(c_id) &&
                 c_id != client.id &&
                 ws.clients[c_id] !== null &&
-                ws.clients[c_id].auth
+                ws.clients[c_id].auth &&
+                ws.clients[c_id].type != "device"
             ) {
                 ws.clients[c_id].socket.send(ws.encode_msg(event, data));
             }
@@ -377,18 +387,21 @@ mq = {
     events: {}, // event handlers
     bind_events: (resolve) => {
         // attach topic events
-        // TODO: bind vp events to update db values
-        // TODO: fire relevant websocket handlers as well
-        mq.bind(global.config.defaults.virtualpin_topics[0], (topic, message, db) => {
-            main.log("update on vp0", message);
-        });
+        for (var i = 0; i < global.config.virtualpin_count; i++) {
+            mq.bind(db.api.get_virtualpin_topic(i), mq.generate_virtualpin_eventhandler(i));
+        }
         if (resolve) resolve();
+    },
+    generate_virtualpin_eventhandler: vpin_num => {
+        return (topic, message, db) => {
+            main.update_virtual_pin(vpin_num, parseInt(message), message);
+        };
     },
     // bind handler to topic event
     bind: (topic, handler) => {
-        mq.events[topic] = (message, db) => {
+        mq.events[topic] = (message) => {
             // check auth here later if necessary
-            handler(topic, message.toString(), db);
+            handler(topic, message.toString());
         };
     },
     init: (resolve) => {
@@ -405,7 +418,7 @@ mq = {
         mq.publisher.client.on('message', (topic, message) => {
             mq.log(`subscriber received message on topic \"${topic.toString()}\":`, message.toString());
             if (mq.events.hasOwnProperty(topic))
-                mq.events[topic](message, db.api);
+                mq.events[topic](message);
             else mq.err("unknown event", topic);
         });
         if (resolve) resolve();
@@ -462,6 +475,24 @@ main = {
     test: _ => {
         // TODO: add any necessary server tests here
         // main.log('testing', '123');
+    },
+    update_virtual_pin: (vpin_num, vpin_val = 0, vpin_val_buffer = "") => {
+        if (vpin_num < 0 || vpin_num >= global.config.virtualpin_count) {
+            main.err(`invalid virtual pin update on vp?: invalid pin number ${vpin_num}`);
+            return;
+        }
+        if (vpin_val == NaN) {
+            main.err(`invalid virtual pin update on vp${vpin_num}: unable to parse value ${vpin_val_buffer}`);
+            return;
+        }
+        // check if update is new
+        if (vpin_val != db.api.get_virtualpin_value(vpin_num)) {
+            main.log(`virtual pin update on vp${vpin_num}: ${vpin_val}`);
+            // update db
+            db.api.set_virtualpin_value(vpin_num, vpin_val);
+            // update ws clients
+            ws.send_to_clients(db.api.get_virtualpin_topic(vpin_num), vpin_val);
+        }
     },
     main: _ => {
         process.on('exit', _ => {
