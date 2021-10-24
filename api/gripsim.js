@@ -100,6 +100,9 @@ db = {
         get_virtualpin_topic: (vp_num) => {
             return db.local.virtualpin[vp_num].topic;
         },
+        get_virtualpin_id: (vp_num) => {
+            return db.local.virtualpin[vp_num].id;
+        },
         get_virtualpin_value: (vp_num) => {
             return db.local.virtualpin[vp_num].value;
         },
@@ -239,6 +242,7 @@ ws = {
     events: {}, // event handlers
     bind_events: (resolve) => {
         // attach client socket events
+
         ws.bind('auth', (client, req, db) => {
             // validate password
             if ((`${req.password}`).trim() == global.config.secret) {
@@ -248,6 +252,7 @@ ws = {
                 ws.send_to_client("auth", true, client); // confirm auth with client
             } else ws.send_to_client("auth", false, client);
         }, false);
+
         ws.bind('identify', (client, req, db) => {
             if ((`${req.password}`).trim() == global.config.secret && db.api.device_exists(req.device_id)) {
                 ws.log(`client ${client.id} – identified as device ${req.device_id}`);
@@ -257,6 +262,17 @@ ws = {
                 ws.send_to_device_client("identify", true, client);
             } else ws.send_to_device_client("identify", false, client);
         }, false);
+
+        ws.bind('get_vpin_values', (client, req, db) => {
+            ws.log(`client ${client.id} - requesting virtual pin values`);
+            var value_map = {};
+            for (var i = 0; i < global.config.virtualpin_count; i++) {
+                value_map[db.get_virtualpin_id(i)] = {
+                    _id: i, value: db.get_virtualpin_value(i)
+                };
+            }
+            ws.send_to_client("vpin_values", value_map, client);
+        });
 
         if (resolve) resolve();
     },

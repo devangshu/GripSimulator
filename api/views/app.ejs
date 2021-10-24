@@ -38,37 +38,28 @@
     </head>
     <body style="background-color: #111">
         <!-- grip simulator -->
-        <div
-            id="loading"
-            style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: table;
-                text-align: center;
-                opacity: 1;
-                transition: opacity 0.1s ease;
-            "
-        >
-            <div
-                style="
-                    display: table-cell;
-                    vertical-align: middle;
-                    margin: 0 auto;
-                "
-            >
-                <img
-                    src="img/gs_icon_200.png"
-                    id="loadingimg"
-                    style="
-                        width: 45%;
-                        max-width: 95px;
-                        opacity: 1;
-                        transition: opacity 0.5s ease;
-                    "
-                />
+        <div id="main_block">
+            <div id="main_content">
+                <div id="main_content_main" style="display: none">
+                    <div id="main_login_form">
+                        <h1>Grip Simulator</h1>
+                        <input
+                            id="auth_pass"
+                            type="password"
+                            placeholder="secret"
+                        />
+                        <button id="auth_submit">GO</button>
+                        <div id="error_msg">Incorrect Password</div>
+                    </div>
+                    <div id="main_app_view">
+                        <h1>Grip Simulator</h1>
+                        <div id="vp_output"></div>
+                        <br /><br /><br />
+                    </div>
+                </div>
+                <div id="main_content_loading" style="display: block">
+                    <img src="img/gs_icon_200.png" id="loading_img" />
+                </div>
             </div>
         </div>
     </body>

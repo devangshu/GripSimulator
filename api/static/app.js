@@ -7,10 +7,42 @@ ui = {
     colors: {},
     update_virtual_pin: (vpin_num, vpin_val) => {
         ui.log(`updating ui for vp${vpin_num}: ${vpin_val}`);
-        // TODO: actually update ui here
+        document.querySelector(`#vp_output #vp_pin_${vpin_num} .vp_pin_code_output`).innerHTML = (`${vpin_val}`);
+    },
+    show_login_error_message: _ => {
+        document.querySelector("#main_login_form #error_msg").style.opacity = "0.9";
+    },
+    hide_login_error_message: _ => {
+        document.querySelector("#main_login_form #error_msg").style.opacity = "0";
+    },
+    switch_to_main_view: (load_initial_virtualpin_values = true) => {
+        document.querySelector("#main_login_form").style.display = "none";
+        document.querySelector("#main_app_view").style.display = "block";
+        util.delay(_ => {
+            if (load_initial_virtualpin_values)
+                ws.api.request_vpin_values();
+        }, 100);
     },
     init: (resolve) => {
         ui.log('initializing');
+        document.querySelector("#main_content_loading").style.display = "none";
+        var handle_submit = _ => {
+            var value = (`${document.querySelector("#auth_pass").value}`).trim();
+            if (value != "") ws.api.login(value);
+        };
+        $("#auth_pass").on("keyup", e => {
+            if (e.keyCode == 13) handle_submit();
+        });
+        $("#auth_submit").click(e => { handle_submit(); });
+        util.delay(_ => {
+            document.querySelector("#main_content_main").style.display = "block";
+        }, 10);
+        document.querySelector("#main_app_view #vp_output").innerHTML = "";
+        var vp_output_html = "";
+        for (var v = 0; v < config.virtualpin_count; v++) {
+            vp_output_html += `<div id="vp_pin_${v}">VP${v}&nbsp;&nbsp;=&nbsp;&nbsp;<code class="vp_pin_code_output">${config.virtualpin_value_init}</code></div>`;
+        }
+        document.querySelector("#main_app_view #vp_output").innerHTML = vp_output_html;
         if (resolve) resolve();
     },
     log: util.logger('ui'),
@@ -25,6 +57,19 @@ ws = {
         (document.domain == 'localhost' ? ':8080' : ((location.protocol === 'https:' ? ':443' : ':80') + '/socket')),
     bind_events: _ => {
         ws.log("binding events");
+        ws.bind('auth', success => {
+            if (success) {
+                ui.hide_login_error_message();
+                ui.switch_to_main_view();
+            } else {
+                ui.show_login_error_message();
+            }
+        });
+        ws.bind('vpin_values', value_map => {
+            for (var v in value_map) {
+                ui.update_virtual_pin(value_map[v]._id, value_map[v].value);
+            }
+        });
         for (var v = 0; v < config.virtualpin_count; v++) {
             ws.bind(`${config.virtualpin_topic}_${v}`, ws.generate_virtualpin_handler(v));
         }
@@ -114,6 +159,9 @@ ws = {
         disconnect: _ => {
             alert("disconnected");
             window.location.reload();
+        },
+        request_vpin_values: _ => {
+            ws.send('get_vpin_values');
         }
     },
     log: util.logger('ws'),
@@ -162,12 +210,12 @@ main = {
                 util.delay(_ => {
                     ui.init(_ => {
                         main.log('ready');
-                        // util.delay(ws.api.cookie_login, 200);
+                        util.delay(ws.api.cookie_login, 200);
                         if (resolve) resolve();
                     });
-                }, 200);
+                }, 100);
             });
-        }, 100);
+        }, 50);
     },
     log: util.logger('main'),
     err: util.logger('main', true)
