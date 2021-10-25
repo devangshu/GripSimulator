@@ -37,7 +37,8 @@ void setup() {
 		Serial.printf("GLOVE\r\n");
 	}
 	// boot
-	Serial.printf("init\r\n");
+	Serial.printf("init\n");
+	if (DEBUG) Serial.printf("\r\n");
 	esp_boot_delay();
 	// leds
 	pinMode(led_b_1, OUTPUT);
@@ -72,7 +73,8 @@ void setup() {
 	mqtt_client.setServer(API_URL, API_PORT);
 	mqtt_client.setCallback(mqtt_handler);
 	// ready
-	Serial.printf("ready\r\n");
+	Serial.printf("ready\n");
+	if (DEBUG) Serial.printf("\r\n");
 }
 
 // driver loop
