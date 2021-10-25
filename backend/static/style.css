@@ -37,6 +37,8 @@ body {
     margin-top: 6px;
     opacity: 0.85;
     letter-spacing: 0.6px;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 #auth_pass {
@@ -148,4 +150,25 @@ pre code {
     letter-spacing: 0.7px;
     cursor: pointer;
     opacity: 0.9;
+}
+
+#main_disconnect_view {
+    display: none;
+}
+
+#main_disconnect_view i {
+    text-transform: uppercase;
+    font-size: 17px;
+}
+
+#main_disconnect_view #disconnect_reload {
+    width: 90%;
+    max-width: 200px;
+    height: 50px;
+    font-size: 17px;
+    margin-top: 6px;
+    opacity: 0.85;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    text-transform: uppercase;
 }

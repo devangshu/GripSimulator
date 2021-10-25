@@ -16,12 +16,18 @@ ui = {
         document.querySelector("#main_login_form #error_msg").style.opacity = "0";
     },
     switch_to_main_view: (load_initial_virtualpin_values = true) => {
+        document.querySelector("#main_disconnect_view").style.display = "none";
         document.querySelector("#main_login_form").style.display = "none";
         document.querySelector("#main_app_view").style.display = "block";
         util.delay(_ => {
             if (load_initial_virtualpin_values)
                 ws.api.request_vpin_values();
         }, 100);
+    },
+    switch_to_disconnect_view: _ => {
+        document.querySelector("#main_disconnect_view").style.display = "block";
+        document.querySelector("#main_login_form").style.display = "none";
+        document.querySelector("#main_app_view").style.display = "none";
     },
     init: (resolve) => {
         ui.log('initializing');
@@ -38,6 +44,9 @@ ui = {
         });
         $("#navbar #logout button").click(e => {
             ws.api.logout();
+        });
+        $("#main_disconnect_view #disconnect_reload").click(e => {
+            window.location.reload();
         });
         util.delay(_ => {
             document.querySelector("#main_content_main").style.display = "block";
@@ -162,8 +171,7 @@ ws = {
             window.location.reload();
         },
         disconnect: _ => {
-            alert("Disconnected");
-            window.location.reload();
+            ui.switch_to_disconnect_view();
         },
         request_vpin_values: _ => {
             ws.send('get_vpin_values');
