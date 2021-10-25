@@ -33,7 +33,12 @@ ui = {
         $("#auth_pass").on("keyup", e => {
             if (e.keyCode == 13) handle_submit();
         });
-        $("#auth_submit").click(e => { handle_submit(); });
+        $("#auth_submit").click(e => {
+            handle_submit();
+        });
+        $("#navbar #logout button").click(e => {
+            ws.api.logout();
+        });
         util.delay(_ => {
             document.querySelector("#main_content_main").style.display = "block";
         }, 10);
@@ -157,7 +162,7 @@ ws = {
             window.location.reload();
         },
         disconnect: _ => {
-            alert("disconnected");
+            alert("Disconnected");
             window.location.reload();
         },
         request_vpin_values: _ => {

@@ -114,3 +114,38 @@ pre code {
     padding: 2px;
     font: 12px Monaco, Consolas, 'Andale  Mono', 'DejaVu Sans Mono', monospace;
 }
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background-color: #f7f7f7;
+    box-shadow: rgba(221 221 221, 0.3) 0px 2px 4px;
+}
+
+#navbar #logo {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-image: url('img/gs_icon_200.png');
+    background-size: cover;
+}
+
+#navbar #logout {
+    position: absolute;
+    top: 21px;
+    right: 38px;
+}
+
+#navbar #logout button {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    opacity: 0.9;
+}
