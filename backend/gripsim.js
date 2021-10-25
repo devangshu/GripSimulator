@@ -197,7 +197,8 @@ web = {
                     client_config[key] = global.config[key];
                 }
             }
-            return JSON.stringify(client_config);
+            const encoded_data = new Buffer(JSON.stringify(client_config)).toString('base64');
+            return `JSON.parse(atob("${encoded_data}"))`;
         },
     },
     compile_view_env: (view_id) => {

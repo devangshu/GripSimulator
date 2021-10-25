@@ -18,7 +18,7 @@
             "device_scale_init": 0.8,
             "device_scale_max": 0.8,
             "device_scale_user": false,
-            "mobile_web_app_capable": "yes"
+            "mobile_web_app_capable": true
         },
         "app": {
             "title": "Grip Simulator"
