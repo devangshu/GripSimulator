@@ -32,7 +32,7 @@ void setup() {
 	} else
 		Serial.begin(9600);
 	if (DEBUG) {
-		Serial.printf("\r\n");
+		Serial.printf("\r\n\r\n");
 		Serial.printf("GRIP SIMULATOR\r\n");
 		Serial.printf("MODEL\r\n");
 	}
