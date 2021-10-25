@@ -197,7 +197,7 @@ web = {
                     client_config[key] = global.config[key];
                 }
             }
-            const encoded_data = new Buffer(JSON.stringify(client_config)).toString('base64');
+            const encoded_data = Buffer.from(JSON.stringify(client_config)).toString('base64');
             return `JSON.parse(atob("${encoded_data}"))`;
         },
     },
@@ -354,7 +354,9 @@ ws = {
                 var d = ws.decode_msg(m.data); // parse message
                 if (d != null) {
                     // console.log('    ', d.event, d.data);
-                    ws.log(`client ${client.id} – message: ${d.event}`, d.data);
+                    if (d.data === undefined)
+                        ws.log(`client ${client.id} – message: ${d.event}`);
+                    else ws.log(`client ${client.id} – message: ${d.event}`, d.data);
                     // handle various events
                     if (ws.events.hasOwnProperty(d.event))
                         ws.events[d.event](client, d.data, db.api);
@@ -408,7 +410,7 @@ mq = {
     publisher: {
         client: null,
         client_options: {
-            clientId: global.config.mqtt_publisher_client_id,
+            clientId: `${global.config.mqtt_publisher_client_id}${(global.env == 'dev') ? '_dev' : ''}`,
         },
         generate_subscribe_callback: topic_name => {
             return (err => {
@@ -446,7 +448,7 @@ mq = {
         mq.log("initializing");
         mq.publisher.client = mqtt.connect(`mqtt://${mq.broker}`, mq.publisher.client_options);
         mq.publisher.client.on('connect', _ => {
-            mq.log(`publisher connected to broker ${mq.broker}`);
+            mq.log(`publisher connected to broker ${mq.broker} as ${mq.publisher.client_options.clientId}`);
             for (var i = 0; i < db.api.virtualpin_count(); i++) {
                 var topic_name = db.api.get_virtualpin_topic(i);
                 mq.publisher.client.subscribe(topic_name, mq.publisher.generate_subscribe_callback(topic_name));
