@@ -11,8 +11,7 @@
 
 #define DEBUG true
 
-#define WIFI_SSID "21 Resident"
-#define WIFI_PASS "Hookem*2101"
+#define WIFI_SSID "utexas-iot"
 #define TIME_SERVER "pool.ntp.org"
 
 #define MQTT_CLIENT_ID "gripsim_445l_client"

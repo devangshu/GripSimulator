@@ -3,7 +3,10 @@
 backend/node_modules
 backend/package-lock.json
 .metadata/
+/.metadata/
 Current Session
 Current Tabs
 src/.jxbrowser.*
 .jxbrowser.*
+RemoteSystemsTempFiles/*
+RemoteSystemsTempFiles/
