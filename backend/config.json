@@ -1,0 +1,34 @@
+{
+    "ws_port": 3027,
+    "http_port": 3026,
+    "authors": "Anuv Gupta, Pulkit Mahajan, Devangshu Goswami, Stefanie Thompson",
+    "secret": "994dc8440a6b8c0627ca035f44b39d7a8eeddc76084b49d797976e32eaac3dfd",
+    "virtualpin_count": 5,
+    "virtualpin_value_init": 0,
+    "device_ids": ["glove", "model"],
+    "esp_client_type_default": "mqtt",
+    "esp_mqtt_client_id": "gripsim_445l_client",
+    "virtualpin_topic": "virtualpin",
+    "mqtt_broker_url": "mqtt.anuv.me:1883",
+    "mqtt_publisher_client_id": "gripsim_445l_publisher",
+    "view_env": {
+        "global": {
+            "author": "__authors",
+            "copy_year": 2021,
+            "device_scale_init": 0.8,
+            "device_scale_max": 0.8,
+            "device_scale_user": false,
+            "mobile_web_app_capable": true
+        },
+        "app": {
+            "title": "Grip Simulator"
+        }
+    },
+    "client_config_props": [
+        "authors",
+        "device_ids",
+        "virtualpin_count",
+        "virtualpin_value_init",
+        "virtualpin_topic"
+    ]
+}

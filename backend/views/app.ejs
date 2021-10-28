@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= `${title}` %></title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="<%= `${author}` %>" />
+        <meta
+            name="copyright"
+            content="<%= `Copyright (c) ${copy_year} ${author}` %>"
+        />
+        <meta
+            name="viewport"
+            content="<%= `width=device-width, initial-scale=${device_scale_init}, maximum-scale=${device_scale_max}, user-scalable=${device_scale_user ? 'yes' : 'no'}` %>"
+        />
+        <meta
+            name="mobile-web-app-capable"
+            content="<%= `${mobile_web_app_capable ? 'yes' : 'no'}` %>"
+        />
+        <meta
+            name="apple-mobile-web-app-capable"
+            content="<%= `${mobile_web_app_capable ? 'yes' : 'no'}` %>"
+        />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <script type="text/javascript" src="lib/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="lib/sha256.min.js"></script>
+        <script type="text/javascript" src="lib/util.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript">
+            const config = <%- export_client_config() %>;
+        </script>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="img/gs_icon_128.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="128x128"
+            href="img/gs_app_128.png"
+        />
+    </head>
+    <body style="background-color: #111">
+        <!-- grip simulator -->
+        <div id="main_block">
+            <div id="main_content">
+                <div id="main_content_main" style="display: none">
+                    <div id="main_login_form">
+                        <h1>Grip Simulator</h1>
+                        <input
+                            id="auth_pass"
+                            type="password"
+                            placeholder="password"
+                        />
+                        <button id="auth_submit">Go</button>
+                        <div id="error_msg">Incorrect Password</div>
+                    </div>
+                    <div id="main_app_view">
+                        <h1>Grip Simulator</h1>
+                        <div id="vp_output"></div>
+                        <br /><br /><br /><br />
+                        <div id="navbar">
+                            <div id="logo"></div>
+                            <div id="logout">
+                                <button>Sign Out</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="main_disconnect_view">
+                        <h1>Grip Simulator</h1>
+                        <i>Disconnected</i>
+                        <br /><br />
+                        <button id="disconnect_reload">Reconnect</button>
+                    </div>
+                </div>
+                <div id="main_content_loading" style="display: block">
+                    <img src="img/gs_icon_200.png" id="loading_img" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

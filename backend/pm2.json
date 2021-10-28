@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "gripsim",
+            "args": "prod",
+            "script": "/home/ubuntu/nodejs-apps/gripsim/gripsim.js",
+            "cwd": "/home/ubuntu/nodejs-apps/gripsim",
+            "error_file": "/home/ubuntu/nodejs-apps/gripsim/gripsim.log",
+            "out_file": "/home/ubuntu/nodejs-apps/gripsim/gripsim.log",
+            "max_memory_restart": "200M",
+            "restart_delay": "3000"
+        }
+    ]
+}
