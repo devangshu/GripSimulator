@@ -11,8 +11,8 @@ PLL.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_typ
 PLL.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h
 PLL.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 PLL.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
-PLL.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/PLL.h
-PLL.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h
+PLL.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/PLL.h
+PLL.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h
 
 ../PLL.c:
 
@@ -36,7 +36,7 @@ C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 
 C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/PLL.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/PLL.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h:
 

@@ -11,10 +11,10 @@ LaunchPad.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sy
 LaunchPad.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h
 LaunchPad.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 LaunchPad.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
-LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/LaunchPad.h
-LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/Unified_Port_Init.h
-LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h
-LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/CortexM.h
+LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/LaunchPad.h
+LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/Unified_Port_Init.h
+LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h
+LaunchPad.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/CortexM.h
 
 ../LaunchPad.c:
 
@@ -38,11 +38,11 @@ C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 
 C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/LaunchPad.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/LaunchPad.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/Unified_Port_Init.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/Unified_Port_Init.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/CortexM.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/CortexM.h:
 

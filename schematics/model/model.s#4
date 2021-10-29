@@ -1590,6 +1590,11 @@ Blue 10mA 5mm diffused</description>
 <part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="JP6" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
+<part name="SUPPLY1" library="EE445L" deviceset="GND" device=""/>
+<part name="SUPPLY2" library="EE445L" deviceset="GND" device=""/>
+<part name="SUPPLY4" library="EE445L" deviceset="GND" device=""/>
+<part name="SUPPLY5" library="EE445L" deviceset="GND" device=""/>
+<part name="SUPPLY8" library="EE445L" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1737,6 +1742,21 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <attribute name="NAME" x="405.13" y="292.735" size="1.778" layer="95"/>
 <attribute name="VALUE" x="405.13" y="281.94" size="1.778" layer="96"/>
 </instance>
+<instance part="SUPPLY1" gate="GND" x="421.64" y="337.82" smashed="yes" rot="R90">
+<attribute name="VALUE" x="426.339" y="333.375" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY2" gate="GND" x="421.64" y="325.12" smashed="yes" rot="R90">
+<attribute name="VALUE" x="426.339" y="320.675" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY4" gate="GND" x="421.64" y="312.42" smashed="yes" rot="R90">
+<attribute name="VALUE" x="426.339" y="307.975" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY5" gate="GND" x="421.64" y="299.72" smashed="yes" rot="R90">
+<attribute name="VALUE" x="426.339" y="295.275" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY8" gate="GND" x="421.64" y="287.02" smashed="yes" rot="R90">
+<attribute name="VALUE" x="426.339" y="282.575" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1793,6 +1813,31 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <junction x="99.06" y="365.76"/>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <wire x1="147.32" y1="368.3" x2="147.32" y2="365.76" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP2" gate="G$1" pin="2"/>
+<pinref part="SUPPLY1" gate="GND" pin="GND"/>
+<wire x1="408.94" y1="337.82" x2="419.1" y2="337.82" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="G$1" pin="2"/>
+<pinref part="SUPPLY2" gate="GND" pin="GND"/>
+<wire x1="408.94" y1="325.12" x2="419.1" y2="325.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="2"/>
+<pinref part="SUPPLY4" gate="GND" pin="GND"/>
+<wire x1="408.94" y1="312.42" x2="419.1" y2="312.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP5" gate="G$1" pin="2"/>
+<pinref part="SUPPLY5" gate="GND" pin="GND"/>
+<wire x1="408.94" y1="299.72" x2="419.1" y2="299.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP6" gate="G$1" pin="2"/>
+<pinref part="SUPPLY8" gate="GND" pin="GND"/>
+<wire x1="408.94" y1="287.02" x2="419.1" y2="287.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3" class="0">

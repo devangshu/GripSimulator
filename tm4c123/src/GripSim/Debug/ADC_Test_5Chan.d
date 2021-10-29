@@ -11,11 +11,11 @@ ADC_Test_5Chan.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/inclu
 ADC_Test_5Chan.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h
 ADC_Test_5Chan.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 ADC_Test_5Chan.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
-ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h
-ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/PLL.h
-ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/LaunchPad.h
-ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/Unified_Port_Init.h
-ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/CortexM.h
+ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h
+ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/PLL.h
+ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/LaunchPad.h
+ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/Unified_Port_Init.h
+ADC_Test_5Chan.obj: D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/CortexM.h
 
 ../ADC_Test_5Chan.c:
 
@@ -39,13 +39,13 @@ C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 
 C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/tm4c123gh6pm.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/tm4c123gh6pm.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/PLL.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/PLL.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/LaunchPad.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/LaunchPad.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/Unified_Port_Init.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/Unified_Port_Init.h:
 
-D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/inc/CortexM.h:
+D:/5.\ Fall2021/EE445L/Labs/FInal\ Project/tm4c123/inc/CortexM.h:
 

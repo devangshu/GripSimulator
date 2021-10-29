@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2021-10-28T23:15:20Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "glove"
+        },
+        "Owner": "Devangshu Goswami <devgos4@gmail.com>",
+        "Size": {
+            "X": 54.59,
+            "Y": 68.25
+        }
+    }
+}

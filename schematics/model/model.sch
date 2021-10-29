@@ -405,129 +405,11 @@ grid 5.08 mm = 200mil, 0.8mm holes</description>
 <text x="3.048" y="-2.921" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="0.254" y1="-1.016" x2="0.762" y2="1.016" layer="21"/>
 </package>
-<package name="CAP100MIL">
-<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.54 mm = 100mil, 0.8mm holes</description>
-<wire x1="-2.159" y1="-0.635" x2="-2.159" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-2.159" y1="0.635" x2="-1.651" y2="1.143" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-2.159" y1="-0.635" x2="-1.651" y2="-1.143" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.651" y1="1.143" x2="-1.651" y2="1.143" width="0.1524" layer="21"/>
-<wire x1="2.159" y1="-0.635" x2="2.159" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.651" y1="-1.143" x2="-1.651" y2="-1.143" width="0.1524" layer="21"/>
-<wire x1="1.651" y1="1.143" x2="2.159" y2="0.635" width="0.1524" layer="21" curve="-90"/>
-<wire x1="1.651" y1="-1.143" x2="2.159" y2="-0.635" width="0.1524" layer="21" curve="90"/>
-<wire x1="-0.3048" y1="0.762" x2="-0.3048" y2="-0.762" width="0.3048" layer="21"/>
-<wire x1="0.3302" y1="0.762" x2="0.3302" y2="-0.762" width="0.3048" layer="21"/>
-<wire x1="1.27" y1="0" x2="0.3302" y2="0" width="0.1524" layer="51"/>
-<wire x1="-1.27" y1="0" x2="-0.3048" y2="0" width="0.1524" layer="51"/>
-<pad name="1" x="-1.27" y="0" drill="0.8"/>
-<pad name="2" x="1.27" y="0" drill="0.8"/>
-<text x="-1.778" y="1.397" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-1.778" y="-2.667" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-<package name="CAP200MIL">
-<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5.08 mm = 200mil, 0.8mm holes</description>
-<wire x1="-2.159" y1="-0.635" x2="-2.159" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="-2.159" y1="0.635" x2="-1.651" y2="1.143" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-2.159" y1="-0.635" x2="-1.651" y2="-1.143" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.651" y1="1.143" x2="-1.651" y2="1.143" width="0.1524" layer="21"/>
-<wire x1="2.159" y1="-0.635" x2="2.159" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="1.651" y1="-1.143" x2="-1.651" y2="-1.143" width="0.1524" layer="21"/>
-<wire x1="1.651" y1="1.143" x2="2.159" y2="0.635" width="0.1524" layer="21" curve="-90"/>
-<wire x1="1.651" y1="-1.143" x2="2.159" y2="-0.635" width="0.1524" layer="21" curve="90"/>
-<wire x1="-0.3048" y1="0.762" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
-<wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.762" width="0.3048" layer="21"/>
-<wire x1="0.3302" y1="0.762" x2="0.3302" y2="0" width="0.3048" layer="21"/>
-<wire x1="0.3302" y1="0" x2="0.3302" y2="-0.762" width="0.3048" layer="21"/>
-<wire x1="1.27" y1="0" x2="0.3302" y2="0" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0" x2="-0.3048" y2="0" width="0.1524" layer="21"/>
-<pad name="1" x="-2.54" y="0" drill="0.8"/>
-<pad name="2" x="2.54" y="0" drill="0.8"/>
-<text x="-2.159" y="1.397" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-2.159" y="-2.667" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<rectangle x1="2.159" y1="-0.381" x2="2.54" y2="0.381" layer="51"/>
-<rectangle x1="-2.54" y1="-0.381" x2="-2.159" y2="0.381" layer="51"/>
-</package>
-<package name="C0402K">
-<description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0204 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 1005</description>
-<wire x1="-0.425" y1="0.2" x2="0.425" y2="0.2" width="0.1016" layer="51"/>
-<wire x1="0.425" y1="-0.2" x2="-0.425" y2="-0.2" width="0.1016" layer="51"/>
-<smd name="1" x="-0.6" y="0" dx="0.925" dy="0.74" layer="1"/>
-<smd name="2" x="0.6" y="0" dx="0.925" dy="0.74" layer="1"/>
-<text x="-0.5" y="0.425" size="1.016" layer="25">&gt;NAME</text>
-<text x="-0.5" y="-1.45" size="1.016" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.5" y1="-0.25" x2="-0.225" y2="0.25" layer="51"/>
-<rectangle x1="0.225" y1="-0.25" x2="0.5" y2="0.25" layer="51"/>
-</package>
-<package name="C0603K">
-<description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0603 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 1608</description>
-<wire x1="-0.725" y1="0.35" x2="0.725" y2="0.35" width="0.1016" layer="51"/>
-<wire x1="0.725" y1="-0.35" x2="-0.725" y2="-0.35" width="0.1016" layer="51"/>
-<smd name="1" x="-0.875" y="0" dx="1.05" dy="1.08" layer="1"/>
-<smd name="2" x="0.875" y="0" dx="1.05" dy="1.08" layer="1"/>
-<text x="-0.8" y="0.65" size="1.016" layer="25">&gt;NAME</text>
-<text x="-0.8" y="-1.65" size="1.016" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.8" y1="-0.4" x2="-0.45" y2="0.4" layer="51"/>
-<rectangle x1="0.45" y1="-0.4" x2="0.8" y2="0.4" layer="51"/>
-</package>
-<package name="C0805K">
-<description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0805 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 2012</description>
-<wire x1="-0.925" y1="0.6" x2="0.925" y2="0.6" width="0.1016" layer="51"/>
-<wire x1="0.925" y1="-0.6" x2="-0.925" y2="-0.6" width="0.1016" layer="51"/>
-<smd name="1" x="-1" y="0" dx="1.3" dy="1.6" layer="1"/>
-<smd name="2" x="1" y="0" dx="1.3" dy="1.6" layer="1"/>
-<text x="-1" y="0.875" size="1.016" layer="25">&gt;NAME</text>
-<text x="-1" y="-1.9" size="1.016" layer="27">&gt;VALUE</text>
-<rectangle x1="-1" y1="-0.65" x2="-0.5" y2="0.65" layer="51"/>
-<rectangle x1="0.5" y1="-0.65" x2="1" y2="0.65" layer="51"/>
-</package>
-<package name="C1206K">
-<description>&lt;b&gt;Ceramic Chip Capacitor KEMET 1206 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 3216</description>
-<wire x1="-1.525" y1="0.75" x2="1.525" y2="0.75" width="0.1016" layer="51"/>
-<wire x1="1.525" y1="-0.75" x2="-1.525" y2="-0.75" width="0.1016" layer="51"/>
-<smd name="1" x="-1.5" y="0" dx="1.5" dy="2" layer="1"/>
-<smd name="2" x="1.5" y="0" dx="1.5" dy="2" layer="1"/>
-<text x="-1.6" y="1.1" size="1.016" layer="25">&gt;NAME</text>
-<text x="-1.6" y="-2.1" size="1.016" layer="27">&gt;VALUE</text>
-<rectangle x1="-1.6" y1="-0.8" x2="-1.1" y2="0.8" layer="51"/>
-<rectangle x1="1.1" y1="-0.8" x2="1.6" y2="0.8" layer="51"/>
-</package>
 <package name="TP_LOOP">
 <pad name="P$1" x="0" y="0" drill="1" shape="square"/>
 <pad name="P$2" x="5.08" y="0" drill="1" shape="square"/>
 <wire x1="0" y1="0" x2="5.08" y2="0" width="0.508" layer="1"/>
 <text x="0" y="1.27" size="1.27" layer="21">&gt;Name</text>
-</package>
-<package name="ESP8266">
-<pad name="RXD" x="-1.27" y="3.81" drill="0.85" shape="square"/>
-<pad name="GPIO_0" x="-1.27" y="1.27" drill="0.85"/>
-<pad name="GPIO_2" x="-1.27" y="-1.27" drill="0.85"/>
-<pad name="GND" x="-1.27" y="-3.81" drill="0.85"/>
-<pad name="TXD" x="1.27" y="-3.81" drill="0.85"/>
-<pad name="CH_EN" x="1.27" y="-1.27" drill="0.85"/>
-<pad name="RST_B" x="1.27" y="1.27" drill="0.85"/>
-<pad name="VDD" x="1.27" y="3.81" drill="0.85"/>
-<wire x1="-22.86" y1="7.62" x2="2.54" y2="7.62" width="0.127" layer="21"/>
-<wire x1="2.54" y1="7.62" x2="2.54" y2="-7.62" width="0.127" layer="21"/>
-<wire x1="2.54" y1="-7.62" x2="-22.86" y2="-7.62" width="0.127" layer="21"/>
-<wire x1="-22.86" y1="-7.62" x2="-22.86" y2="7.62" width="0.127" layer="21"/>
-<text x="-12.7" y="5.08" size="1.27" layer="21">ESP8266</text>
-<wire x1="-5.08" y1="3.81" x2="-5.08" y2="-5.08" width="0.3048" layer="21"/>
-<wire x1="-5.08" y1="-5.08" x2="-20.32" y2="-5.08" width="0.3048" layer="21"/>
-<wire x1="-20.32" y1="-5.08" x2="-20.32" y2="-2.54" width="0.3048" layer="21"/>
-<wire x1="-20.32" y1="-2.54" x2="-7.62" y2="-2.54" width="0.3048" layer="21"/>
-<wire x1="-7.62" y1="-2.54" x2="-7.62" y2="0" width="0.3048" layer="21"/>
-<wire x1="-7.62" y1="0" x2="-20.32" y2="0" width="0.3048" layer="21"/>
-<wire x1="-20.32" y1="0" x2="-20.32" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="-20.32" y1="2.54" x2="-7.62" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="-7.62" y1="2.54" x2="-7.62" y2="3.81" width="0.3048" layer="21"/>
-<wire x1="-7.62" y1="3.81" x2="-20.32" y2="3.81" width="0.3048" layer="21"/>
-<wire x1="-5.08" y1="-5.08" x2="-2.54" y2="-5.08" width="0.3048" layer="21"/>
 </package>
 <package name="TM4C_BOOSTER_PACK">
 <pad name="J1-1" x="0" y="22.86" drill="1"/>
@@ -834,16 +716,6 @@ grid 2.54 mm, horinzontal</description>
 <pin name="+" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
 <pin name="-" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
 </symbol>
-<symbol name="C-US">
-<wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="-4.826" x2="0" y2="-1.27" width="0.1524" layer="94"/>
-<text x="1.016" y="0.635" size="1.778" layer="95">&gt;NAME</text>
-<text x="1.016" y="-4.191" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-<wire x1="-2.54" y1="-1.27" x2="0" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="0" y1="-1.27" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
-</symbol>
 <symbol name="TP_LOOP">
 <circle x="-3.81" y="-2.54" radius="1.27" width="0.254" layer="94"/>
 <circle x="3.81" y="-2.54" radius="1.27" width="0.254" layer="94"/>
@@ -851,20 +723,6 @@ grid 2.54 mm, horinzontal</description>
 <pin name="TP" x="0" y="-5.08" visible="off" length="short" rot="R90"/>
 <wire x1="-3.81" y1="-1.27" x2="3.81" y2="-1.27" width="0.254" layer="94" curve="-180"/>
 <text x="-5.08" y="3.048" size="1.778" layer="95">&gt;Name</text>
-</symbol>
-<symbol name="ESP8266">
-<wire x1="-10.16" y1="-15.24" x2="-10.16" y2="15.24" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="15.24" x2="12.7" y2="15.24" width="0.254" layer="94"/>
-<wire x1="12.7" y1="15.24" x2="12.7" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-15.24" x2="-10.16" y2="-15.24" width="0.254" layer="94"/>
-<pin name="2-TXD" x="-15.24" y="12.7" length="middle"/>
-<pin name="3-GPIO_2" x="-15.24" y="7.62" length="middle"/>
-<pin name="4-CH_EN" x="-15.24" y="2.54" length="middle"/>
-<pin name="5-GPIO_0" x="-15.24" y="-2.54" length="middle"/>
-<pin name="6-RST_B" x="-15.24" y="-7.62" length="middle"/>
-<pin name="7-RXD" x="-15.24" y="-12.7" length="middle"/>
-<pin name="8-VDD" x="5.08" y="20.32" length="middle" rot="R270"/>
-<pin name="1-GND" x="5.08" y="-20.32" length="middle" rot="R90"/>
 </symbol>
 <symbol name="BP_PORT_A">
 <wire x1="0" y1="0" x2="12.7" y2="0" width="0.254" layer="94"/>
@@ -1165,68 +1023,6 @@ grid 2.54 mm, horinzontal</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="CAPACITOR" prefix="C" uservalue="yes">
-<description>&lt;B&gt;CAPACITOR&lt;/B&gt;, American symbol</description>
-<gates>
-<gate name="G$1" symbol="C-US" x="0" y="0"/>
-</gates>
-<devices>
-<device name="025-024X044" package="CAP100MIL">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="050-024X044" package="CAP200MIL">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="C0402K" package="C0402K">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="C0603K" package="C0603K">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="C0805K" package="C0805K">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="C1206K" package="C1206K">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="TP_LOOP">
 <gates>
 <gate name="G$1" symbol="TP_LOOP" x="0" y="0"/>
@@ -1235,28 +1031,6 @@ grid 2.54 mm, horinzontal</description>
 <device name="" package="TP_LOOP">
 <connects>
 <connect gate="G$1" pin="TP" pad="P$1 P$2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="ESP_8266">
-<gates>
-<gate name="G$1" symbol="ESP8266" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="ESP8266">
-<connects>
-<connect gate="G$1" pin="1-GND" pad="GND"/>
-<connect gate="G$1" pin="2-TXD" pad="TXD"/>
-<connect gate="G$1" pin="3-GPIO_2" pad="GPIO_2"/>
-<connect gate="G$1" pin="4-CH_EN" pad="CH_EN"/>
-<connect gate="G$1" pin="5-GPIO_0" pad="GPIO_0"/>
-<connect gate="G$1" pin="6-RST_B" pad="RST_B"/>
-<connect gate="G$1" pin="7-RXD" pad="RXD"/>
-<connect gate="G$1" pin="8-VDD" pad="VDD"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1541,12 +1315,6 @@ Blue 10mA 5mm diffused</description>
 </classes>
 <parts>
 <part name="R3" library="EE445L" deviceset="RESISTOR" device="0204/7" value="10K"/>
-<part name="C1" library="EE445L" deviceset="CAPACITOR_POLARIZED" device="E5-6" value="4.7uf"/>
-<part name="C19" library="EE445L" deviceset="CAPACITOR" device="050-024X044" value="0.1uf"/>
-<part name="SUPPLY3" library="EE445L" deviceset="GND" device=""/>
-<part name="SUPPLY32" library="EE445L" deviceset="GND" device=""/>
-<part name="SUPPLY35" library="EE445L" deviceset="GND" device=""/>
-<part name="U$1" library="EE445L" deviceset="ESP_8266" device=""/>
 <part name="5.0V" library="EE445L" deviceset="TP_LOOP" device=""/>
 <part name="U$2" library="EE445L" deviceset="TM4C_BP" device=""/>
 <part name="P+1" library="EE445L" deviceset="+5V" device=""/>
@@ -1566,7 +1334,6 @@ Blue 10mA 5mm diffused</description>
 <part name="R1" library="EE445L" deviceset="RESISTOR" device="0204/5" value="1K"/>
 <part name="SUPPLY7" library="EE445L" deviceset="GND" device=""/>
 <part name="LED2" library="EE445L" deviceset="LED" device="3MM"/>
-<part name="+3V4" library="EE445L" deviceset="+3V3" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
 <part name="FRAME4" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
@@ -1589,7 +1356,6 @@ Blue 10mA 5mm diffused</description>
 <sheets>
 <sheet>
 <plain>
-<text x="228.854" y="130.302" size="5.08" layer="97">WiFi Block</text>
 <text x="58.42" y="403.86" size="1.778" layer="91">Use this jumper to
 measure current</text>
 <text x="322.58" y="330.2" size="2.54" layer="91">Remove R9 and R10 from LaunchPad to
@@ -1607,24 +1373,6 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <attribute name="NAME" x="173.7614" y="173.99" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="178.562" y="173.99" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="C1" gate="G$1" x="238.76" y="160.02" smashed="yes">
-<attribute name="NAME" x="239.776" y="160.655" size="1.778" layer="95"/>
-<attribute name="VALUE" x="232.156" y="155.829" size="1.778" layer="96"/>
-</instance>
-<instance part="C19" gate="G$1" x="251.46" y="157.48" smashed="yes" rot="R180">
-<attribute name="NAME" x="252.984" y="159.385" size="1.778" layer="95"/>
-<attribute name="VALUE" x="245.364" y="154.051" size="1.778" layer="96"/>
-</instance>
-<instance part="SUPPLY3" gate="GND" x="218.44" y="132.08" smashed="yes">
-<attribute name="VALUE" x="211.455" y="132.461" size="1.778" layer="96"/>
-</instance>
-<instance part="SUPPLY32" gate="GND" x="238.76" y="144.78" smashed="yes">
-<attribute name="VALUE" x="231.775" y="145.161" size="1.778" layer="96"/>
-</instance>
-<instance part="SUPPLY35" gate="GND" x="251.46" y="144.78" smashed="yes">
-<attribute name="VALUE" x="244.475" y="145.161" size="1.778" layer="96"/>
-</instance>
-<instance part="U$1" gate="G$1" x="213.36" y="157.48" smashed="yes"/>
 <instance part="5.0V" gate="G$1" x="93.98" y="401.32" smashed="yes">
 <attribute name="NAME" x="91.44" y="404.368" size="1.778" layer="95"/>
 </instance>
@@ -1690,9 +1438,6 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <instance part="LED2" gate="G$1" x="147.32" y="373.38" smashed="yes">
 <attribute name="NAME" x="150.876" y="368.808" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="153.035" y="368.808" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V4" gate="G$1" x="203.2" y="193.04" smashed="yes">
-<attribute name="VALUE" x="210.82" y="193.04" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="FRAME2" gate="G$1" x="287.02" y="0" smashed="yes"/>
 <instance part="FRAME2" gate="G$2" x="459.74" y="0" smashed="yes">
@@ -1767,21 +1512,6 @@ use both PB7 and PD1 and PB6 and PD0</text>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<pinref part="SUPPLY32" gate="GND" pin="GND"/>
-<pinref part="C1" gate="G$1" pin="-"/>
-<wire x1="238.76" y1="147.32" x2="238.76" y2="154.94" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C19" gate="G$1" pin="1"/>
-<pinref part="SUPPLY35" gate="GND" pin="GND"/>
-<wire x1="251.46" y1="154.94" x2="251.46" y2="147.32" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="SUPPLY3" gate="GND" pin="GND"/>
-<wire x1="218.44" y1="137.16" x2="218.44" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="1-GND"/>
-</segment>
 <segment>
 <pinref part="U$2" gate="G$7" pin="GND2"/>
 <wire x1="55.88" y1="314.96" x2="50.8" y2="314.96" width="0.1524" layer="91"/>
@@ -1870,36 +1600,11 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <junction x="147.32" y="391.16"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 </segment>
-<segment>
-<pinref part="R3" gate="G$1" pin="2"/>
-<pinref part="C1" gate="G$1" pin="+"/>
-<wire x1="238.76" y1="162.56" x2="238.76" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="238.76" y1="182.88" x2="218.44" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="218.44" y1="182.88" x2="218.44" y2="177.8" width="0.1524" layer="91"/>
-<pinref part="C19" gate="G$1" pin="2"/>
-<wire x1="251.46" y1="162.56" x2="251.46" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="251.46" y1="182.88" x2="238.76" y2="182.88" width="0.1524" layer="91"/>
-<junction x="238.76" y="182.88"/>
-<wire x1="198.12" y1="160.02" x2="190.5" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="160.02" x2="190.5" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="182.88" x2="203.2" y2="182.88" width="0.1524" layer="91"/>
-<junction x="218.44" y="182.88"/>
-<pinref part="U$1" gate="G$1" pin="4-CH_EN"/>
-<pinref part="U$1" gate="G$1" pin="8-VDD"/>
-<wire x1="203.2" y1="182.88" x2="218.44" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="182.88" x2="190.5" y2="182.88" width="0.1524" layer="91"/>
-<junction x="190.5" y="182.88"/>
-<pinref part="+3V4" gate="G$1" pin="+3V3"/>
-<wire x1="203.2" y1="190.5" x2="203.2" y2="182.88" width="0.1524" layer="91"/>
-<junction x="203.2" y="182.88"/>
-</segment>
 </net>
 <net name="8266_RX" class="0">
 <segment>
-<wire x1="198.12" y1="144.78" x2="172.72" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="144.78" x2="172.72" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="157.48" x2="127" y2="157.48" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="7-RXD"/>
 <pinref part="U$2" gate="G$5" pin="PE5"/>
 <label x="147.32" y="157.48" size="1.778" layer="95"/>
 </segment>
@@ -1907,9 +1612,7 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <net name="8266_TX" class="0">
 <segment>
 <wire x1="162.56" y1="154.94" x2="127" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="170.18" x2="162.56" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="170.18" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="2-TXD"/>
 <pinref part="U$2" gate="G$5" pin="PE4"/>
 <label x="147.32" y="154.94" size="1.778" layer="95"/>
 </segment>
@@ -1924,9 +1627,7 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <net name="RSTB_8266" class="0">
 <segment>
 <wire x1="165.1" y1="147.32" x2="127" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="149.86" x2="165.1" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="149.86" x2="165.1" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="6-RST_B"/>
 <pinref part="U$2" gate="G$5" pin="PE1"/>
 <label x="147.32" y="147.32" size="1.778" layer="95"/>
 </segment>
@@ -1934,8 +1635,6 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <net name="8266_GPIO_2" class="0">
 <segment>
 <wire x1="170.18" y1="144.78" x2="170.18" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="165.1" x2="198.12" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="3-GPIO_2"/>
 <wire x1="127" y1="144.78" x2="170.18" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$5" pin="PE0"/>
 <label x="147.32" y="144.78" size="1.778" layer="95"/>
@@ -1943,10 +1642,8 @@ use both PB7 and PD1 and PB6 and PD0</text>
 </net>
 <net name="8266_GPIO_0" class="0">
 <segment>
-<wire x1="198.12" y1="154.94" x2="175.26" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="175.26" y1="154.94" x2="175.26" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="5-GPIO_0"/>
 <label x="177.8" y="154.94" size="1.524" layer="95"/>
 </segment>
 </net>

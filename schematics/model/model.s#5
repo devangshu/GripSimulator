@@ -1870,6 +1870,11 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <pinref part="U$2" gate="G$5" pin="PE2"/>
 <label x="147.32" y="149.86" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP6" gate="G$1" pin="1"/>
+<wire x1="408.94" y1="289.56" x2="396.24" y2="289.56" width="0.1524" layer="91"/>
+<label x="396.24" y="289.56" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="RSTB_8266" class="0">
 <segment>

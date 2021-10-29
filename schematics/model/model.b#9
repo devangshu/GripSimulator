@@ -982,16 +982,16 @@ design rules under a new name.</description>
 <signal name="PD6">
 <contactref element="U$2" pad="J4-33"/>
 </signal>
-<signal name="SSI1_MOSI">
+<signal name="AIN4">
 <contactref element="U$2" pad="J3-26"/>
 </signal>
-<signal name="PD2">
+<signal name="AIN5">
 <contactref element="U$2" pad="J3-25"/>
 </signal>
-<signal name="SSI1_FS">
+<signal name="AIN6">
 <contactref element="U$2" pad="J3-24"/>
 </signal>
-<signal name="SSI_SCK">
+<signal name="AIN7">
 <contactref element="U$2" pad="J3-23"/>
 </signal>
 <signal name="N$5">

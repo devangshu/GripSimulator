@@ -1470,6 +1470,7 @@ Blue 10mA 5mm diffused</description>
 <part name="+3V4" library="EE445L" deviceset="+3V3" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
+<part name="FRAME4" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="EE445L Lab Board"/>
 </parts>
 <sheets>
 <sheet>
@@ -1484,6 +1485,7 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <text x="464.82" y="30.48" size="2.54" layer="94">YOUR NAME HERE</text>
 <text x="175.26" y="251.46" size="2.54" layer="94">YOUR NAME HERE</text>
 <text x="175.26" y="27.94" size="2.54" layer="94">YOUR NAME HERE</text>
+<text x="464.82" y="251.46" size="2.54" layer="94">YOUR NAME HERE</text>
 </plain>
 <instances>
 <instance part="R3" gate="G$1" x="175.26" y="177.8" smashed="yes" rot="R90">
@@ -1588,6 +1590,12 @@ use both PB7 and PD1 and PB6 and PD0</text>
 <attribute name="LAST_DATE_TIME" x="185.42" y="-1.27" size="2.54" layer="94"/>
 <attribute name="SHEET" x="259.08" y="-1.27" size="2.54" layer="94"/>
 <attribute name="DRAWING_NAME" x="190.5" y="16.51" size="2.54" layer="94"/>
+</instance>
+<instance part="FRAME4" gate="G$1" x="287.02" y="220.98" smashed="yes"/>
+<instance part="FRAME4" gate="G$2" x="459.74" y="220.98" smashed="yes">
+<attribute name="LAST_DATE_TIME" x="472.44" y="222.25" size="2.54" layer="94"/>
+<attribute name="SHEET" x="546.1" y="222.25" size="2.54" layer="94"/>
+<attribute name="DRAWING_NAME" x="477.52" y="240.03" size="2.54" layer="94"/>
 </instance>
 </instances>
 <busses>
