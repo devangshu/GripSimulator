@@ -1,1 +1,0 @@
-"./ADC_Test_5Chan.obj" "./tm4c123gh6pm_startup_ccs.obj" "./inc/CortexM.obj" "./inc/LaunchPad.obj" "./inc/PLL.obj" "../tm4c123gh6pm.cmd" -llibc.a 
