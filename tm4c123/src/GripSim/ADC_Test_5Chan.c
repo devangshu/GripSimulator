@@ -1,8 +1,8 @@
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
-#include "../inc/PLL.h"
-#include "../inc/LaunchPad.h"
-#include "../inc/CortexM.h"
+#include "tm4c123gh6pm.h"
+#include "PLL.h"
+#include "LaunchPad.h"
+#include "CortexM.h"
 
 uint32_t ADCvalue[4];
 

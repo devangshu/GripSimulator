@@ -24,4 +24,42 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>inc/CortexM.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/CortexM.c</locationURI>
+		</link>
+		<link>
+			<name>inc/CortexM.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/CortexM.h</locationURI>
+		</link>
+		<link>
+			<name>inc/LaunchPad.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/LaunchPad.c</locationURI>
+		</link>
+		<link>
+			<name>inc/LaunchPad.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/LaunchPad.h</locationURI>
+		</link>
+		<link>
+			<name>inc/PLL.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/PLL.c</locationURI>
+		</link>
+		<link>
+			<name>inc/PLL.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/PLL.h</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>LOCALINC</name>
+			<value>$%7BPROJECT_LOC%7D/inc</value>
+		</variable>
+	</variableList>
 </projectDescription>

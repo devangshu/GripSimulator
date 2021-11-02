@@ -2,32 +2,32 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
-
-CG_TOOL_ROOT := C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS
+CG_TOOL_ROOT := /Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
 "./ADC_Test_5Chan.obj" \
-"./CortexM.obj" \
-"./LaunchPad.obj" \
-"./PLL.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
+"./inc/CortexM.obj" \
+"./inc/LaunchPad.obj" \
+"./inc/PLL.obj" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
 
 -include ../makefile.init
 
-RM := DEL /F
-RMDIR := RMDIR /S/Q
+RM := rm -rf
+RMDIR := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include inc/subdir_vars.mk
 -include subdir_rules.mk
+-include inc/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -144,22 +144,22 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 GripSim.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"GripSim.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="GripSim_linkInfo.xml" --rom_model -o "GripSim.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"GripSim.map" --heap_size=0 --stack_size=512 -i"/Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"/Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="GripSim_linkInfo.xml" --rom_model -o "GripSim.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 GripSim.hex: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: Arm Hex Utility'
-	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "GripSim.hex" $(EXE_OUTPUTS__QUOTED)
+	"/Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "GripSim.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ADC_Test_5Chan.obj" "CortexM.obj" "LaunchPad.obj" "PLL.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "ADC_Test_5Chan.d" "CortexM.d" "LaunchPad.d" "PLL.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "ADC_Test_5Chan.obj" "tm4c123gh6pm_startup_ccs.obj" "inc/CortexM.obj" "inc/LaunchPad.obj" "inc/PLL.obj" 
+	-$(RM) "ADC_Test_5Chan.d" "tm4c123gh6pm_startup_ccs.d" "inc/CortexM.d" "inc/LaunchPad.d" "inc/PLL.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
