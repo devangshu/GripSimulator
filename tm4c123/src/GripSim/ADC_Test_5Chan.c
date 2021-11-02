@@ -6,7 +6,7 @@
 
 uint32_t ADCvalue[4];
 
-static void start_clock(void){
+static void start_clock(void) {
      volatile uint32_t delay;
      SYSCTL_RCGCADC_R |= 0x00000001; // 1) activate ADC0
      SYSCTL_RCGCGPIO_R |= 0x10;      // 1) activate clock for Port E
@@ -14,7 +14,7 @@ static void start_clock(void){
      while((SYSCTL_PRADC_R&0x0001) != 0x0001){};
 }
 
-static void enable_GPIO(void){
+static void enable_GPIO(void) {
       GPIO_PORTE_DIR_R &= ~0x0F;      // 3) make PE3-0 input
       GPIO_PORTE_AFSEL_R |= 0x0F;     // 4) enable alternate function on PE3-0
       GPIO_PORTE_DEN_R &= ~0x0F;      // 5) disable digital I/O on PE3-0
@@ -22,7 +22,7 @@ static void enable_GPIO(void){
       GPIO_PORTE_AMSEL_R |= 0x0F;     // 6) enable analog functionality on PE3-0
 }
 
-static void enable_ADC(void){
+static void enable_ADC(void) {
     ADC0_PC_R &= ~0xF;              // 8) clear max sample rate field
     ADC0_PC_R |= 0x1;               //125K samples/sec
     ADC0_SSPRI_R = 0x3210;          // 9) Sequencer 3 is lowest priority
@@ -35,14 +35,14 @@ static void enable_ADC(void){
     ADC0_ACTSS_R |= 0x0004;         // 15) enable sample sequencer 2
 }
 
-void ADC_Init(void){
+void ADC_Init(void) {
     start_clock();
     enable_GPIO();
     enable_ADC();
 }
 
 
-void ADC_In(uint32_t data[4]){
+void ADC_In(uint32_t data[4]) {
   ADC0_PSSI_R = 0x0004;            // 1) initiate SS2
   while((ADC0_RIS_R&0x04)==0){};   // 2) wait for conversion done
   data[3] = ADC0_SSFIFO2_R&0xFFF;  // 3A) PE3 result
@@ -52,7 +52,7 @@ void ADC_In(uint32_t data[4]){
   ADC0_ISC_R = 0x0004;             // 4) acknowledge completion
 }
 
-int main(void){// uint32_t i;
+int main(void) { // uint32_t i;
   PLL_Init(Bus80MHz);                   // 80 MHz
   LaunchPad_Init();                     // activate port F
   ADC_Init();                         // ADC channels 8 and 9, software start

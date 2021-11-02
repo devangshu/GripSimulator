@@ -4,12 +4,9 @@
 backend/node_modules
 backend/package-lock.json
 
-tm4c123/src/GripSim/Debug
-tm4c123/src/GripSim/Debug/
+
 tm4c123/src/GripSim/.metadata/
 tm4c123/src/GripSim/.metadata
-tm4c123/src/GripSim/targetConfigs
-tm4c123/src/GripSim/targetConfigs/
 
 .metadata
 .metadata/
