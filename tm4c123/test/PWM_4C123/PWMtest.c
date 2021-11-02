@@ -32,7 +32,7 @@ void WaitForInterrupt(void);  // low power mode
 
 int main(void){
   PLL_Init(Bus80MHz);               // bus clock at 80 MHz
-  PWM0A_Init(25000, 2500);          // 2 ms duty
+  PWM0A_Init(25000, 2505);          // 2 ms duty
   PWM1A_Init(25000, 1250);
   PWM1B_Init(25000, 1600);
   PWM0B_Init(25000, 1875);         // 1.5 ms duty
@@ -40,9 +40,9 @@ int main(void){
 
   while(1){
     //WaitForInterrupt();
-      PWM0A_Duty(1250);
-      for(uint32_t i = 0; i < 10000000; i++){};
-      PWM0A_Duty(2500);
-      for(uint32_t i = 0; i < 10000000; i++){};
+      for(int i = 1250; i < 2500; i++){
+          PWM0A_Duty(i);
+          for(uint32_t j = 0; j < 10000; j++){}
+      }
   }
 }

@@ -5,7 +5,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.Tiva TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="${build_artifact:PWM_4C123}"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Tiva TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="PWM_4C123"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:PWM_4C123}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Tiva TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="/Users/devm1/Desktop/Labs/ValvanoWareTM4C123v5/PWM_4C123/Debug/PWM_4C123.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Tiva TM4C123GH6PM.ccxml.Stellaris In-Circuit Debug Interface/CORTEX_M4_0" value="/Users/devm1/Desktop/GripSimulator/tm4c123/test/PWM_4C123/Debug/PWM_4C123.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/PWM_4C123"/>
 </listAttribute>
