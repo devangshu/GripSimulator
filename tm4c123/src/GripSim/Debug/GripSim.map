@@ -1,31 +1,31 @@
 ******************************************************************************
                   TI ARM Linker Unix v20.2.5                   
 ******************************************************************************
->> Linked Mon Nov  1 22:12:47 2021
+>> Linked Tue Nov  2 17:41:49 2021
 
 OUTPUT FILE NAME:   <GripSim.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000005f5
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000e6d
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  00000698  0003f968  R  X
-  SRAM                  20000000   00008000  00000210  00007df0  RW X
+  FLASH                 00000000   00040000  00000efe  0003f102  R  X
+  SRAM                  20000000   00008000  00000214  00007dec  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    0000069c   0000069c    r-x
+00000000    00000000    00000f04   00000f04    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000418   00000418    r-x .text
-  00000688    00000688    00000014   00000014    r-- .cinit
-20000000    20000000    00000210   00000000    rw-
+  0000026c    0000026c    00000c7e   00000c7e    r-x .text
+  00000ef0    00000ef0    00000014   00000014    r-- .cinit
+20000000    20000000    00000214   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
-  20000200    20000200    00000010   00000000    rw- .bss
+  20000200    20000200    00000014   00000000    rw- .bss
 
 
 SECTION ALLOCATION MAP
@@ -36,28 +36,29 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00000418     
-                  0000026c    000001a4     ADC_Test_5Chan.obj (.text)
-                  00000410    00000118     LaunchPad.obj (.text)
-                  00000528    00000088     PLL.obj (.text)
-                  000005b0    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  000005f4    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  00000628    0000002c     CortexM.obj (.text)
-                  00000654    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00000670    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  0000067c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000680    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00000c7e     
+                  0000026c    00000914     ADCSWTrigger.obj (.text)
+                  00000b80    00000118     LaunchPad.obj (.text)
+                  00000c98    00000108     ADCTestMain.obj (.text)
+                  00000da0    00000088     PLL.obj (.text)
+                  00000e28    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000e6c    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000ea0    00000026     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000ec6    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000ee2    00000004                                   : pre_init.c.obj (.text:_system_pre_init)
+                  00000ee6    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    00000688    00000014     
-                  00000688    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00000690    00000004     (__TI_handler_table)
-                  00000694    00000008     (__TI_cinit_table)
+.cinit     0    00000ef0    00000014     
+                  00000ef0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000ef8    00000004     (__TI_handler_table)
+                  00000efc    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
-.bss       0    20000200    00000010     UNINITIALIZED
+.bss       0    20000200    00000014     UNINITIALIZED
                   20000200    00000010     (.common:ADCvalue)
+                  20000210    00000004     (.common:UserTask2)
 
 .stack     0    20000000    00000200     UNINITIALIZED
                   20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -71,17 +72,18 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     ./
-       tm4c123gh6pm_startup_ccs.obj   12     620       0      
-       ADC_Test_5Chan.obj             420    0         16     
+       tm4c123gh6pm_startup_ccs.obj   38     620       0      
+       ADCTestMain.obj                264    0         0      
+       ADC_Test_5Chan.obj             0      0         16     
     +--+------------------------------+------+---------+---------+
-       Total:                         432    620       16     
+       Total:                         302    620       16     
                                                               
     ./inc/
+       ADCSWTrigger.obj               2324   0         4      
        LaunchPad.obj                  280    0         0      
        PLL.obj                        136    0         0      
-       CortexM.obj                    44     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         460    0         0      
+       Total:                         2740   0         4      
                                                               
     /Applications/ti/ccs1100/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
        autoinit.c.obj                 68     0         0      
@@ -95,108 +97,144 @@ MODULE SUMMARY
        Stack:                         0      0         512    
        Linker Generated:              0      20        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   1048   640       528    
+       Grand Total:                   3198   640       532    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00000694 records: 1, size/record: 8, table size: 8
-	.bss: load addr=00000688, load size=00000008 bytes, run addr=20000200, run size=00000010 bytes, compression=zero_init
+__TI_cinit_table @ 00000efc records: 1, size/record: 8, table size: 8
+	.bss: load addr=00000ef0, load size=00000008 bytes, run addr=20000200, run size=00000014 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00000690 records: 1, size/record: 4, table size: 4
+__TI_handler_table @ 00000ef8 records: 1, size/record: 4, table size: 4
 	index: 0, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                          
--------   ----                          
-00000335  ADC_In                        
-00000325  ADC_Init                      
-20000200  ADCvalue                      
-00000681  C$$EXIT                       
-00000629  Clock_Delay                   
-00000637  Clock_Delay1ms                
-00000411  LaunchPad_Init                
-00000449  LaunchPad_Input               
-000004e7  LaunchPad_Output              
-000004b7  LaunchPad_WaitForRelease      
-0000049b  LaunchPad_WaitForTouch        
-00000529  PLL_Init                      
-00000671  ResetISR                      
-20000200  __STACK_END                   
-00000200  __STACK_SIZE                  
-20000200  __STACK_TOP                   
-00000694  __TI_CINIT_Base               
-0000069c  __TI_CINIT_Limit              
-00000690  __TI_Handler_Table_Base       
-00000694  __TI_Handler_Table_Limit      
-000005b1  __TI_auto_init_nobinit_nopinit
-ffffffff  __TI_pprof_out_hndl           
-ffffffff  __TI_prof_data_size           
-ffffffff  __TI_prof_data_start          
-00000000  __TI_static_base__            
-00000655  __TI_zero_init_nomemset       
-ffffffff  __binit__                     
-ffffffff  __c_args__                    
-UNDEFED   __mpu_init                    
-20000000  __stack                       
-20000000  __start___llvm_prf_cnts       
-20000000  __stop___llvm_prf_cnts        
-000005f5  _c_int00_noargs               
-UNDEFED   _system_post_cinit            
-0000067d  _system_pre_init              
-00000681  abort                         
-ffffffff  binit                         
-00000000  g_pfnVectors                  
-00000383  main                          
+address   name                                      
+-------   ----                                      
+000008f9  ADC0_InSeq2                               
+0000074b  ADC0_InSeq3                               
+000009b1  ADC0_InSeq3_InternalTemperature           
+00000855  ADC0_InitSWTriggerSeq2                    
+000003e9  ADC0_InitSWTriggerSeq3                    
+00000317  ADC0_InitSWTriggerSeq3_Ch7                
+0000026d  ADC0_InitSWTriggerSeq3_Ch9                
+0000093d  ADC0_InitSWTriggerSeq3_InternalTemperature
+00000ad5  ADC_In3210                                
+0000081f  ADC_In89                                  
+000009eb  ADC_Init3210                              
+00000773  ADC_Init89                                
+20000200  ADCvalue                                  
+00000ee7  C$$EXIT                                   
+00000ead  DisableInterrupts                         
+00000eb1  EnableInterrupts                          
+00000ebd  EndCritical                               
+00000b81  LaunchPad_Init                            
+00000bb9  LaunchPad_Input                           
+00000c57  LaunchPad_Output                          
+00000c27  LaunchPad_WaitForRelease                  
+00000c0b  LaunchPad_WaitForTouch                    
+00000c99  LogicAnalyzerTask                         
+00000da1  PLL_Init                                  
+00000ea1  ResetISR                                  
+00000ca7  ScopeTask                                 
+00000eb5  StartCritical                             
+00000d19  Timer0A_Handler                           
+00000cb3  Timer0A_Init100HzInt                      
+20000210  UserTask2                                 
+00000ec3  WaitForInterrupt                          
+20000200  __STACK_END                               
+00000200  __STACK_SIZE                              
+20000200  __STACK_TOP                               
+00000efc  __TI_CINIT_Base                           
+00000f04  __TI_CINIT_Limit                          
+00000ef8  __TI_Handler_Table_Base                   
+00000efc  __TI_Handler_Table_Limit                  
+00000e29  __TI_auto_init_nobinit_nopinit            
+ffffffff  __TI_pprof_out_hndl                       
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+00000000  __TI_static_base__                        
+00000ec7  __TI_zero_init_nomemset                   
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+UNDEFED   __mpu_init                                
+20000000  __stack                                   
+20000000  __start___llvm_prf_cnts                   
+20000000  __stop___llvm_prf_cnts                    
+00000e6d  _c_int00_noargs                           
+UNDEFED   _system_post_cinit                        
+00000ee3  _system_pre_init                          
+00000ee7  abort                                     
+ffffffff  binit                                     
+00000000  g_pfnVectors                              
+00000d35  main                                      
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                          
--------   ----                          
-00000000  __TI_static_base__            
-00000000  g_pfnVectors                  
-00000200  __STACK_SIZE                  
-00000325  ADC_Init                      
-00000335  ADC_In                        
-00000383  main                          
-00000411  LaunchPad_Init                
-00000449  LaunchPad_Input               
-0000049b  LaunchPad_WaitForTouch        
-000004b7  LaunchPad_WaitForRelease      
-000004e7  LaunchPad_Output              
-00000529  PLL_Init                      
-000005b1  __TI_auto_init_nobinit_nopinit
-000005f5  _c_int00_noargs               
-00000629  Clock_Delay                   
-00000637  Clock_Delay1ms                
-00000655  __TI_zero_init_nomemset       
-00000671  ResetISR                      
-0000067d  _system_pre_init              
-00000681  C$$EXIT                       
-00000681  abort                         
-00000690  __TI_Handler_Table_Base       
-00000694  __TI_CINIT_Base               
-00000694  __TI_Handler_Table_Limit      
-0000069c  __TI_CINIT_Limit              
-20000000  __stack                       
-20000000  __start___llvm_prf_cnts       
-20000000  __stop___llvm_prf_cnts        
-20000200  ADCvalue                      
-20000200  __STACK_END                   
-20000200  __STACK_TOP                   
-ffffffff  __TI_pprof_out_hndl           
-ffffffff  __TI_prof_data_size           
-ffffffff  __TI_prof_data_start          
-ffffffff  __binit__                     
-ffffffff  __c_args__                    
-ffffffff  binit                         
-UNDEFED   __mpu_init                    
-UNDEFED   _system_post_cinit            
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  g_pfnVectors                              
+00000200  __STACK_SIZE                              
+0000026d  ADC0_InitSWTriggerSeq3_Ch9                
+00000317  ADC0_InitSWTriggerSeq3_Ch7                
+000003e9  ADC0_InitSWTriggerSeq3                    
+0000074b  ADC0_InSeq3                               
+00000773  ADC_Init89                                
+0000081f  ADC_In89                                  
+00000855  ADC0_InitSWTriggerSeq2                    
+000008f9  ADC0_InSeq2                               
+0000093d  ADC0_InitSWTriggerSeq3_InternalTemperature
+000009b1  ADC0_InSeq3_InternalTemperature           
+000009eb  ADC_Init3210                              
+00000ad5  ADC_In3210                                
+00000b81  LaunchPad_Init                            
+00000bb9  LaunchPad_Input                           
+00000c0b  LaunchPad_WaitForTouch                    
+00000c27  LaunchPad_WaitForRelease                  
+00000c57  LaunchPad_Output                          
+00000c99  LogicAnalyzerTask                         
+00000ca7  ScopeTask                                 
+00000cb3  Timer0A_Init100HzInt                      
+00000d19  Timer0A_Handler                           
+00000d35  main                                      
+00000da1  PLL_Init                                  
+00000e29  __TI_auto_init_nobinit_nopinit            
+00000e6d  _c_int00_noargs                           
+00000ea1  ResetISR                                  
+00000ead  DisableInterrupts                         
+00000eb1  EnableInterrupts                          
+00000eb5  StartCritical                             
+00000ebd  EndCritical                               
+00000ec3  WaitForInterrupt                          
+00000ec7  __TI_zero_init_nomemset                   
+00000ee3  _system_pre_init                          
+00000ee7  C$$EXIT                                   
+00000ee7  abort                                     
+00000ef8  __TI_Handler_Table_Base                   
+00000efc  __TI_CINIT_Base                           
+00000efc  __TI_Handler_Table_Limit                  
+00000f04  __TI_CINIT_Limit                          
+20000000  __stack                                   
+20000000  __start___llvm_prf_cnts                   
+20000000  __stop___llvm_prf_cnts                    
+20000200  ADCvalue                                  
+20000200  __STACK_END                               
+20000200  __STACK_TOP                               
+20000210  UserTask2                                 
+ffffffff  __TI_pprof_out_hndl                       
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   __mpu_init                                
+UNDEFED   _system_post_cinit                        
 
-[39 symbols]
+[57 symbols]

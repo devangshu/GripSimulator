@@ -26,6 +26,16 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>inc/ADCSWTrigger.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/ADCSWTrigger.c</locationURI>
+		</link>
+		<link>
+			<name>inc/ADCSWTrigger.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/ADCSWTrigger.h</locationURI>
+		</link>
+		<link>
 			<name>inc/CortexM.c</name>
 			<type>1</type>
 			<locationURI>PARENT-3-LOCALINC/inc/CortexM.c</locationURI>
@@ -54,6 +64,51 @@
 			<name>inc/PLL.h</name>
 			<type>1</type>
 			<locationURI>PARENT-3-LOCALINC/inc/PLL.h</locationURI>
+		</link>
+		<link>
+			<name>inc/Timer2.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/Timer2.c</locationURI>
+		</link>
+		<link>
+			<name>inc/Timer2.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/Timer2.h</locationURI>
+		</link>
+		<link>
+			<name>inc/Timer3.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/Timer3.c</locationURI>
+		</link>
+		<link>
+			<name>inc/Timer3.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/Timer3.h</locationURI>
+		</link>
+		<link>
+			<name>inc/UARTLab4.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/UARTLab4.c</locationURI>
+		</link>
+		<link>
+			<name>inc/UARTLab4.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/UARTLab4.h</locationURI>
+		</link>
+		<link>
+			<name>inc/esp8266Lab4.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/esp8266Lab4.c</locationURI>
+		</link>
+		<link>
+			<name>inc/esp8266Lab4.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/inc/esp8266Lab4.h</locationURI>
+		</link>
+		<link>
+			<name>inc/tm4c123gh6pm.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-LOCALINC/inc/tm4c123gh6pm.h</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

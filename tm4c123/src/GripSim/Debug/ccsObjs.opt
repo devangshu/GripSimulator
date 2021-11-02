@@ -1,1 +1,1 @@
-"./ADC_Test_5Chan.obj" "./tm4c123gh6pm_startup_ccs.obj" "./inc/CortexM.obj" "./inc/LaunchPad.obj" "./inc/PLL.obj" "../tm4c123gh6pm.cmd" -llibc.a 
+"./ADCTestMain.obj" "./ADC_Test_5Chan.obj" "./ESPDriver.obj" "./TimerDriver.obj" "./tm4c123gh6pm_startup_ccs.obj" "./inc/ADCSWTrigger.obj" "./inc/CortexM.obj" "./inc/LaunchPad.obj" "./inc/PLL.obj" "./inc/Timer2.obj" "./inc/Timer3.obj" "./inc/UARTLab4.obj" "./inc/esp8266Lab4.obj" "../tm4c123gh6pm.cmd" -llibc.a 

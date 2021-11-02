@@ -4,6 +4,9 @@
 #include "LaunchPad.h"
 #include "CortexM.h"
 
+#include "ESPDriver.h"
+#include "TimerDriver.h"
+
 uint32_t ADCvalue[4];
 
 static void start_clock(void) {
@@ -52,10 +55,14 @@ void ADC_In(uint32_t data[4]) {
   ADC0_ISC_R = 0x0004;             // 4) acknowledge completion
 }
 
-int main(void) { // uint32_t i;
+int main1(void) { // uint32_t i;
   PLL_Init(Bus80MHz);                   // 80 MHz
   LaunchPad_Init();                     // activate port F
+
+
+  //ESP_Init();
   ADC_Init();                         // ADC channels 8 and 9, software start
+
   while(1){
     PF2 = 0x04;
                           // ADCvalue[0] is ADC8 (PE5) 0 to 4095
