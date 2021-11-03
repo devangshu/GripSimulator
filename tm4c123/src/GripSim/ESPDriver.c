@@ -8,7 +8,7 @@
 #define PF2 (*((volatile uint32_t *)0x40025010))
 
 #define VP_COUNT 5
-//#define DEBUG true
+#define DEBUG
 
 
 /* module fields */
@@ -34,6 +34,8 @@ void TM4C_to_ESP(uint32_t pin, uint32_t value) {
   if (pin > VP_COUNT - 1) {
 		return;	 // ignore illegal requests
   }
+  if (pin < 10)
+      ESP8266_OutChar('0');
   ESP8266_OutUDec(pin);         // Send the Virtual Pin #
   ESP8266_OutChar('=');
   ESP8266_OutUDec(value);       // Send the current value
@@ -72,9 +74,9 @@ void ESP_to_TM4C_READ(void) {
 		ESP_Receive_Data(pin_num, pin_int);
 
 #ifdef DEBUG
-		UART_OutString(" Pin_Number = ");
+		UART_OutString("vp");
 		UART_OutString(Pin_Number);
-		UART_OutString("   Pin_Integer = ");
+		UART_OutString("=");
 		UART_OutString(Pin_Integer);
 		UART_OutString("\n\r");
 #endif
@@ -85,18 +87,19 @@ void ESP_to_TM4C_READ(void) {
 /* module external methods */
 
 uint8_t esp_ready = 0;
-void ESP_Init(uint32_t read_period) {
+void ESP_Init(uint32_t read_period, uint8_t read_enable) {
 #ifdef DEBUG
-	UART_Init(5);  // Enable Debug Serial Port
+    UART_Init(5);  // Enable Debug Serial Port
 	UART_OutString("\n\rEE445L Lab 4D\n\r");
 #endif
-	ESP8266_Init();		  // Enable ESP8266 Serial Port
-	ESP8266_Reset();	  // Reset the WiFi module
+	ESP8266_Init();		   // Enable ESP8266 Serial Port
+	ESP8266_Reset();	     // Reset the WiFi module
 	//ESP8266_SetupWiFi();  // Setup communications to MQTT Server
 
-
-	Timer_SetTask2(&ESP_to_TM4C_READ, read_period);
-	// check for receive data from ESP every 10ms
+	if (read_enable) {
+	    // check for receive data from ESP every 10ms
+	    Timer_SetTask3(&ESP_to_TM4C_READ, read_period);
+	}
 
 	esp_ready = 1;
 }

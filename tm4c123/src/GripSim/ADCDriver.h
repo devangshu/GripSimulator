@@ -3,11 +3,12 @@
 
 
 #include <stdint.h>
-#include <stdio.h>
 
 #include "tm4c123gh6pm.h"
 #include "ADCSWTrigger.h"
+#include "CortexM.h"
 
+#include "TimerDriver.h"
 
 void ADC_Init(uint32_t read_period, void(*task)(uint32_t,uint32_t), int trigger_on_change);
 

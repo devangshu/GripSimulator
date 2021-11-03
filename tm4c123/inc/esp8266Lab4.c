@@ -336,6 +336,19 @@ void ESP8266_Init(void){
   UART5_Init(2);                  // Enable ESP8266 Serial Port 
   EnableInterrupts();
 }
+// clone without enabling interrupts
+void ESP8266_Init_Safe(void){
+  SYSCTL_RCGCGPIO_R |= 0x10; // activate port E
+  while((SYSCTL_PRGPIO_R&0x10)==0){};
+  GPIO_PORTE_DIR_R |= 0x0A;       // output digital I/O on PE3,1
+  GPIO_PORTE_DIR_R &= ~0x01;      // input digital I/O on PE0
+  GPIO_PORTE_AFSEL_R &= ~0x0B;    // disable alt funct on PE3,1,0
+  GPIO_PORTE_DEN_R |= 0x0B;       // enable digital I/O on PE3,1,0
+  GPIO_PORTE_PCTL_R = (GPIO_PORTE_PCTL_R&0xFFFF0F00);
+  GPIO_PORTE_AMSEL_R &= ~0x0B;    // disable analog functionality on PE3,1,0
+  UART5_Init(2);                  // Enable ESP8266 Serial Port
+  //EnableInterrupts();
+}
 // Initialize ESP8266 interface and reset the
 void ESP8266_Reset(void) {
 #ifdef DEBUG1

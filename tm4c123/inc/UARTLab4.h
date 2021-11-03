@@ -41,6 +41,7 @@
 // Input: none
 // Output: none
 void UART_Init(uint32_t priority);
+void UART_Init_Safe(uint32_t priority);
 
 //------------UART_InChar------------
 // Wait for new serial port input

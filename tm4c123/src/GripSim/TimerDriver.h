@@ -2,9 +2,9 @@
 #define _TIMERDRIVER_H_
 
 
-#include <stdio.h>
-#include <stdint.h>
+
 #include "tm4c123gh6pm.h"
+#include "CortexM.h"
 
 #include "Timer2.h"
 #include "Timer3.h"

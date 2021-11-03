@@ -3,7 +3,7 @@
 #ifndef __GS_MODEL_H__
 #define __GS_MODEL_H__
 
-#define WIFI_PASS "0335803293960677"
+//#define WIFI_PASS "0335803293960677"
 
 #define API_URL "mqtt.anuv.me"	// "test.mosquitto.org"
 #define API_PORT 1883

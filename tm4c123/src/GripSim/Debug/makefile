@@ -9,8 +9,11 @@ GEN_CMDS__FLAG :=
 
 ORDERED_OBJS += \
 "./ADCDriver.obj" \
+"./Debug.obj" \
 "./ESPDriver.obj" \
+"./Glove.obj" \
 "./Main.obj" \
+"./Model.obj" \
 "./TimerDriver.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./inc/ADCSWTrigger.obj" \
@@ -166,8 +169,8 @@ GripSim.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ADCDriver.obj" "ESPDriver.obj" "Main.obj" "TimerDriver.obj" "tm4c123gh6pm_startup_ccs.obj" "inc/ADCSWTrigger.obj" "inc/CortexM.obj" "inc/LaunchPad.obj" "inc/PLL.obj" "inc/Timer2.obj" "inc/Timer3.obj" "inc/UARTLab4.obj" "inc/esp8266Lab4.obj" 
-	-$(RM) "ADCDriver.d" "ESPDriver.d" "Main.d" "TimerDriver.d" "tm4c123gh6pm_startup_ccs.d" "inc/ADCSWTrigger.d" "inc/CortexM.d" "inc/LaunchPad.d" "inc/PLL.d" "inc/Timer2.d" "inc/Timer3.d" "inc/UARTLab4.d" "inc/esp8266Lab4.d" 
+	-$(RM) "ADCDriver.obj" "Debug.obj" "ESPDriver.obj" "Glove.obj" "Main.obj" "Model.obj" "TimerDriver.obj" "tm4c123gh6pm_startup_ccs.obj" "inc/ADCSWTrigger.obj" "inc/CortexM.obj" "inc/LaunchPad.obj" "inc/PLL.obj" "inc/Timer2.obj" "inc/Timer3.obj" "inc/UARTLab4.obj" "inc/esp8266Lab4.obj" 
+	-$(RM) "ADCDriver.d" "Debug.d" "ESPDriver.d" "Glove.d" "Main.d" "Model.d" "TimerDriver.d" "tm4c123gh6pm_startup_ccs.d" "inc/ADCSWTrigger.d" "inc/CortexM.d" "inc/LaunchPad.d" "inc/PLL.d" "inc/Timer2.d" "inc/Timer3.d" "inc/UARTLab4.d" "inc/esp8266Lab4.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

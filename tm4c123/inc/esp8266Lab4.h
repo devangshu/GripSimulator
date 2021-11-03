@@ -22,6 +22,7 @@
 // Uses interrupt driven UART5 on PE5,4
 // Uses simple GPIO output on PE3,1,0
 void ESP8266_Init(void);
+void ESP8266_Init_Safe(void);
 
 void ESP8266_Reset(void);
 

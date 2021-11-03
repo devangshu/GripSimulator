@@ -142,7 +142,7 @@ void Timer_SetTask3(void (*task3)(void), uint32_t period) {
 void Timer_Init() {
 	//Timer0_Init();
     //Timer0A_Init100HzInt();
-	Timer1_Init();
+	//Timer1_Init();
 	//Timer2_Init();
 	//Timer_InitTask3(timer_task);
 }
