@@ -16,6 +16,8 @@ ADC_Test_5Chan.obj: /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/in
 ADC_Test_5Chan.obj: /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/inc/LaunchPad.h
 ADC_Test_5Chan.obj: /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/inc/Unified_Port_Init.h
 ADC_Test_5Chan.obj: /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/inc/CortexM.h
+ADC_Test_5Chan.obj: ../ESPDriver.h
+ADC_Test_5Chan.obj: ../TimerDriver.h
 
 ../ADC_Test_5Chan.c:
 
@@ -48,4 +50,8 @@ ADC_Test_5Chan.obj: /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/in
 /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/inc/Unified_Port_Init.h:
 
 /Users/anuv/Documents/School/EE445L/GripSimulator/tm4c123/inc/CortexM.h:
+
+../ESPDriver.h:
+
+../TimerDriver.h:
 
