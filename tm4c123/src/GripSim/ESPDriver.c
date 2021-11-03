@@ -1,25 +1,17 @@
 /* ESP8266 Driver Module */
 
-
-#include <stdint.h>
-#include <stdio.h>
-
-#include "tm4c123gh6pm.h"
-#include "TimerDriver.h"
-#include "UARTLab4.h"
-#include "esp8266Lab4.h"
-
 #include "ESPDriver.h"
+
 
 /* constants */
 
 #define PF2 (*((volatile uint32_t *)0x40025010))
-#define DEBUG true
+
+#define VP_COUNT 5
+//#define DEBUG true
+
 
 /* module fields */
-
-extern uint8_t oldHour;
-extern uint8_t oldMinute;
 
 volatile uint16_t vp0val = 0;
 volatile uint16_t vp1val = 0;
@@ -34,12 +26,12 @@ char Pin_Float[8] = "0.0000";
 uint32_t pin_num;
 uint32_t pin_int;
 
+
 /* module internal functions */
 
-// ----------------------------------- TM4C_to_ESP ------------------------------
-// Send data to the ESP8266 device
+// send data to ESP8266 device
 void TM4C_to_ESP(uint32_t pin, uint32_t value) {
-  if (pin > 4) {
+  if (pin > VP_COUNT - 1) {
 		return;	 // ignore illegal requests
   }
   ESP8266_OutUDec(pin);         // Send the Virtual Pin #
@@ -48,12 +40,18 @@ void TM4C_to_ESP(uint32_t pin, uint32_t value) {
   ESP8266_OutString("\n");      // end message
 }
 
+// receive data from ESP8266 device
 void ESP_to_TM4C_READ(void) {
+
+#ifdef DEBUG
 	int j;
 	char data;
+#endif
+
 	// Check to see if a there is data in the RXD buffer
 	if (ESP8266_GetMessage(serial_buf)) {  // returns false if no message
 										   // Read the data from the UART5
+
 #ifdef DEBUG
 		j = 0;
 		do {
@@ -83,28 +81,11 @@ void ESP_to_TM4C_READ(void) {
 	}
 }
 
-void Send_Information(uint32_t pin_num, uint32_t pin_val) {
-	if (pin_num == 0) {
-	    if (pin_val != vp0val) TM4C_to_ESP(0, pin_val);   // VP0
-	    vp0val = pin_val;
-	} else if (pin_num == 1) {
-        if (pin_val != vp1val) TM4C_to_ESP(1, pin_val);   // VP1
-        vp1val = pin_val;
-	} else if (pin_num == 2) {
-        if (pin_val != vp2val) TM4C_to_ESP(2, pin_val);   // VP2
-        vp2val = pin_val;
-	} else if (pin_num == 3) {
-        if (pin_val != vp3val) TM4C_to_ESP(3, pin_val);   // VP3
-        vp3val = pin_val;
-	} else if (pin_num == 4) {
-        if (pin_val != vp4val) TM4C_to_ESP(4, pin_val);   // VP4
-        vp4val = pin_val;
-	}
-}
 
 /* module external methods */
+
 uint8_t esp_ready = 0;
-void ESP_Init(void) {
+void ESP_Init(uint32_t read_period) {
 #ifdef DEBUG
 	UART_Init(5);  // Enable Debug Serial Port
 	UART_OutString("\n\rEE445L Lab 4D\n\r");
@@ -114,7 +95,7 @@ void ESP_Init(void) {
 	//ESP8266_SetupWiFi();  // Setup communications to MQTT Server
 
 
-	Timer_InitTask2(&ESP_to_TM4C_READ);
+	Timer_SetTask2(&ESP_to_TM4C_READ, read_period);
 	// check for receive data from ESP every 10ms
 
 	esp_ready = 1;
@@ -163,3 +144,23 @@ void ESP_Receive_Data(uint32_t pin_num, uint32_t pin_val) {
 	}
 	*/
 }
+
+void ESP_Send_Data(uint32_t pin_num, uint32_t pin_val) {
+    if (pin_num == 0) {
+        if (pin_val != vp0val) TM4C_to_ESP(0, pin_val);   // VP0
+        vp0val = pin_val;
+    } else if (pin_num == 1) {
+        if (pin_val != vp1val) TM4C_to_ESP(1, pin_val);   // VP1
+        vp1val = pin_val;
+    } else if (pin_num == 2) {
+        if (pin_val != vp2val) TM4C_to_ESP(2, pin_val);   // VP2
+        vp2val = pin_val;
+    } else if (pin_num == 3) {
+        if (pin_val != vp3val) TM4C_to_ESP(3, pin_val);   // VP3
+        vp3val = pin_val;
+    } else if (pin_num == 4) {
+        if (pin_val != vp4val) TM4C_to_ESP(4, pin_val);   // VP4
+        vp4val = pin_val;
+    }
+}
+
