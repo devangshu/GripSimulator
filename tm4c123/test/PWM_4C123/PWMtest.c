@@ -36,9 +36,21 @@ int main(void){
 
   while(1){
     //WaitForInterrupt();
-      for(int i = 1250; i < 2500; i++){
+	  /*
+      for(int i = 0; i < 180; i++){
           Finger0_Duty(i);
-          for(uint32_t j = 0; j < 10000; j++){}
+          for(uint32_t j = 0; j < 50000; j++){}
       }
+
+      for(int i = 180; i > 0; i--){
+          Finger0_Duty(i);
+          for(uint32_t j = 0; j < 50000; j++){}
+      }
+      */
+	  Finger4_Duty(0);
+	  for(uint32_t j = 0; j < 10000000; j++){}
+	  Finger4_Duty(180);
+	  for(uint32_t j = 0; j < 10000000; j++){}
   }
+
 }

@@ -50,7 +50,7 @@ void PWM1A_Init(uint16_t period, uint16_t duty){
   SYSCTL_RCGCPWM_R |= 0x01;
   SYSCTL_RCGCGPIO_R |= 0x02;
   delay = SYSCTL_RCGCGPIO_R;
-  GPIO_PORTB_AFSEL_R |= 0x10;
+  GPIO_PORTB_AFSEL_R |= 0x10; //PB4
   GPIO_PORTB_PCTL_R &= ~0x000F0000;
   GPIO_PORTB_PCTL_R |= 0x00040000;
   GPIO_PORTB_AMSEL_R &= ~0x10;
@@ -71,7 +71,7 @@ void PWM1B_Init(uint16_t period, uint16_t duty){
   SYSCTL_RCGCPWM_R |= 0x01;
   SYSCTL_RCGCGPIO_R |= 0x02;
   delay = SYSCTL_RCGCGPIO_R;
-  GPIO_PORTB_AFSEL_R |= 0x20;
+  GPIO_PORTB_AFSEL_R |= 0x20; //PB5
   GPIO_PORTB_PCTL_R &= ~0x00F00000;
   GPIO_PORTB_PCTL_R |= 0x00400000;
   GPIO_PORTB_AMSEL_R &= ~0x20;
@@ -92,7 +92,7 @@ void PWM2A_Init(uint16_t period, uint16_t duty){
   SYSCTL_RCGCPWM_R |= 0x01;
   SYSCTL_RCGCGPIO_R |= 0x10;
   delay = SYSCTL_RCGCGPIO_R;
-  GPIO_PORTE_AFSEL_R |= 0x10;
+  GPIO_PORTE_AFSEL_R |= 0x10; //PE4
   GPIO_PORTE_PCTL_R &= ~0x000F0000;
   GPIO_PORTE_PCTL_R |= 0x00040000;
   GPIO_PORTE_AMSEL_R &= ~0x10;
@@ -142,6 +142,6 @@ void Hand_Init(void){
 }
 
 uint16_t toDuty (uint16_t angle){
-	uint16_t duty = (7*angle) + 1250;
+	uint16_t duty = (11*angle) + 625;
 	return duty;
 }
