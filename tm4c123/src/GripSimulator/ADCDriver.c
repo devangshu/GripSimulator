@@ -13,14 +13,45 @@
 uint32_t ADC_Value;
 void (*ADC_Task)(uint32_t, uint32_t);
 int ADC_Trigger_Change;
+uint32_t data[5];
 
 /* module internal functions */
+uint32_t angle_LUT[100];
 
+static void populate_LUT(void){
+	int value = 4000;
+	int step_size1 = 40;
+	int step_size2 = 16;
+	int i;
+	for(i = 0; i < 50; i++){
+		angle_LUT[i] = value;
+		value -= step_size1;
+	}
+	for(i = 50; i < 100; i ++){
+		angle_LUT[i] = value;
+		value -= step_size2;
+	}
+}
 uint32_t ADC_Read_Angle(void) {
+	/*
 	uint32_t step = 5;	// 1
 	uint32_t value = ADC0_InSeq3() / (4096 / 100);
 	value /= step;
 	return step * value;
+	*/
+	ADC_In5(data);
+	uint32_t finger2 = data[4];
+	if (finger2 < 1200) finger2 = 1200;
+	if (finger2 > 4000) finger2 = 4000;
+	int angle = 0;
+	int i;
+	for (i = 0; i < 100 - 1; i++) {
+		if (finger2 < angle_LUT[i + 1] && finger2 > angle_LUT[i]) {
+			angle=i;
+			break;
+		}
+	}
+	return angle;
 }
 
 void ADC_Handler(void) {
@@ -38,7 +69,9 @@ void ADC_Init(uint32_t read_period, void (*task)(uint32_t, uint32_t), int trigge
 	ADC_Task = task;
 	ADC_Trigger_Change = trigger_on_change;
 	// ADC0_InitSWTriggerSeq3_Ch9();  // PE4
-	ADC0_InitSWTriggerSeq3_Ch7();  // PD0
+	//ADC0_InitSWTriggerSeq3_Ch7();  // PD0
+	populate_LUT();
+	ADC_Init_5Chan();
 	Timer_SetTask2(&ADC_Handler, read_period);
 }
 
