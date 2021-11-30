@@ -42,11 +42,7 @@ void ADC_Init(uint32_t read_period, void (*task)(uint32_t, uint32_t), int trigge
 	Timer_SetTask2(&ADC_Handler, read_period);
 }
 
-/*
- *
- * UNTESTED
- *
- */
+
 void ADC_Init_5Chan(void){
   volatile uint32_t delay;
   SYSCTL_RCGCADC_R |= 0x00000001; // 1) activate ADC0
@@ -84,17 +80,13 @@ void ADC_Init_5Chan(void){
 }
 
 void ADC_In5(uint32_t data[5]){
-  ADC0_PSSI_R = 0x0004;            // 1) initiate SS2
+  ADC0_PSSI_R = 0x000C;            // 1) initiate SS2
   while((ADC0_RIS_R&0x04)==0){};   // 2) wait for conversion done
   data[3] = ADC0_SSFIFO2_R&0xFFF;  // 3A) PE3 result
   data[2] = ADC0_SSFIFO2_R&0xFFF;  // 3A) PE2 result
   data[1] = ADC0_SSFIFO2_R&0xFFF;  // 3A) PE1 result
   data[0] = ADC0_SSFIFO2_R&0xFFF;  // 3B) PE0 result
-  ADC0_ISC_R = 0x0004;             // 4) acknowledge completion
-
-  ADC0_PSSI_R = 0x0008;            // 1) initiate SS3
   while((ADC0_RIS_R&0x08)==0){};   // 2) wait for conversion done
   data[4] = ADC0_SSFIFO3_R&0xFFF;  // 3) PE4 result
-  ADC0_ISC_R = 0x0008;             // 4) acknowledge completion
+  ADC0_ISC_R = 0x000C;             // 4) acknowledge completion
 }
-

@@ -16,13 +16,8 @@ uint32_t ADC_Read(void);
 
 void ADC_Handler(void);
 
-/*
- *
- * UNTESTED
- *
- */
 void ADC_Init_5Chan(void);
 
-void ADC_In5(void);
+void ADC_In5(uint32_t data[5]);
 
 #endif
