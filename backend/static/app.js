@@ -2,8 +2,13 @@
 // web client
 
 
-var main, ws, ui;
+var main, ws, ui, phalanx1finger1;
 var myChart, data;
+
+var finger1phalanx1, finger1phalanx2, finger1phalanx3, finger2phalanx1, finger2phalanx2, finger2phalanx3, finger3phalanx1, finger3phalanx2, finger3phalanx3, finger4phalanx1, finger4phalanx2, finger4phalanx3;
+
+
+var x1 = x2 = x3 = .01;
 
 
 
@@ -14,6 +19,7 @@ ui = {
         document.querySelector(`#vp_output #vp_pin_${vpin_num} .vp_pin_code_output`).innerHTML = (`${vpin_val}`);
         // TODO: Update graph here
         data.datasets[vpin_num].data.push(vpin_val);
+        //TODO: Update this to be derivative based (for jitter calculation)
         myChart.update();
     },
     show_login_error_message: _ => {
@@ -62,42 +68,42 @@ ui = {
         const labels = [
             'Time',
         ];
-    
+
         data = {
             labels: labels,
             datasets: [{
                 label: 'VP0',
                 backgroundColor: 'rgb(255, 199, 132)',
-        
+
                 data: [config.virtualpin_value_init],
             },
             {
                 label: 'VP1',
                 backgroundColor: 'rgb(155, 29, 132)',
-        
+
                 data: [config.virtualpin_value_init],
             },
             {
                 label: 'VP2',
                 backgroundColor: 'rgb(25, 89, 132)',
-        
+
                 data: [config.virtualpin_value_init],
             },
             {
                 label: 'VP3',
                 backgroundColor: 'rgb(235, 159, 132)',
-        
+
                 data: [config.virtualpin_value_init],
             },
             {
                 label: 'VP4',
                 backgroundColor: 'rgb(215, 189, 132)',
-        
+
                 data: [config.virtualpin_value_init],
             }
             ]
         };
-        
+
         const chartConfig = {
             type: 'line',
             data: data,
@@ -199,6 +205,7 @@ ws = {
         window.addEventListener('beforeunload', e => {
             // socket.close(1001);
         });
+        hand.init();
         ws.socket = socket;
         ws.bind_events();
     },
@@ -285,13 +292,170 @@ main = {
                         main.log('ready');
                         util.delay(ws.api.cookie_login, 200);
                         if (resolve) resolve();
+
                     });
                 }, 100);
             });
         }, 50);
+
     },
     log: util.logger('main'),
     err: util.logger('main', true)
 };
+
+hand = {
+    scene: THREE.Scene,
+    camera: THREE.Camera,
+    renderer: THREE.WebGLRenderer,
+    group: THREE.Object3D,
+    test: _ => {
+        hand.log("test test");
+    },
+    init: (resolve) => {
+        hand.test();
+        var threeCanvas = document.body.getElementsByClassName("model")[0];
+
+        if (threeCanvas) {
+            hand.log("test 3000");
+        }
+        // main.log("Test");
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+        // renderer.setClearColor(THREE.Color.NAMES.clear, 0);
+        document.body.getElementsByClassName("model")[0].appendChild(renderer.domElement);
+
+        clock = new THREE.Clock();
+
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        // scene.add(cube);
+
+        // camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+        camera.position.z = 30;
+        hand.drawHand();
+
+        const animate = function () {
+            requestAnimationFrame(animate);
+            //TODO: Update each phalanx here 
+
+            finger1phalanx1.rotation.x = x1;
+            finger1phalanx2.rotation.x = x2;
+            finger1phalanx3.rotation.x = x3;
+
+            finger2phalanx1.rotation.x = x1;
+            finger2phalanx2.rotation.x = x2;
+            finger2phalanx3.rotation.x = x3;
+
+            finger3phalanx1.rotation.x = x1;
+            finger3phalanx2.rotation.x = x2;
+            finger3phalanx3.rotation.x = x3;
+
+            finger4phalanx1.rotation.x = x1;
+            finger4phalanx2.rotation.x = x2;
+            finger4phalanx3.rotation.x = x3;
+
+            // group.rotation.y += 0.01;
+            group.rotation.y += 0.01;
+
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    },
+    drawHand: _ => {
+        group = new THREE.Object3D();
+        group.position.set(0, 0, 0);
+
+        // var falangeP1 = new THREE.Vector3(10, 30, 10);
+        // var falangeP2 = new THREE.Vector3(-10, 0, -10);
+
+        const palmGeometry = new THREE.BoxGeometry(10, 10, 1);
+        const fingerGeometry = new THREE.BoxGeometry(1, 5, 1);
+        const palmMaterial = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
+        const fingerMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const palm = new THREE.Mesh(palmGeometry, palmMaterial);
+
+        //Index
+        finger1phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger1phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger1phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        
+        //Middle
+        finger2phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger2phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger2phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        
+        //Ring? Wow i dnot know the names of the fingers
+        finger3phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger3phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger3phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+
+        //pinky
+        finger4phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger4phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+        finger4phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+
+
+        finger1phalanx1.position.x = -5;
+        finger1phalanx1.position.y = 4;
+        finger1phalanx1.position.z = 0;
+        finger1phalanx2.position.y = 4;
+        finger1phalanx3.position.y = 4;
+
+        finger2phalanx1.position.x = -2;
+        finger2phalanx1.position.y = 4;
+        finger2phalanx1.position.z = 0;
+        finger2phalanx2.position.y = 4;
+        finger2phalanx3.position.y = 4;
+
+        finger3phalanx1.position.x = 1;
+        finger3phalanx1.position.y = 4;
+        finger3phalanx1.position.z = 0;
+        finger3phalanx2.position.y = 4;
+        finger3phalanx3.position.y = 4;
+
+        finger4phalanx1.position.x = 4;
+        finger4phalanx1.position.y = 4;
+        finger4phalanx1.position.z = 0;
+        finger4phalanx2.position.y = 4;
+        finger4phalanx3.position.y = 4;
+
+
+
+        fingerGeometry.computeVertexNormals();
+        
+        group.add(palm);
+        
+        finger1phalanx2.add(finger1phalanx3);
+        finger1phalanx1.add(finger1phalanx2);
+        group.add(finger1phalanx1);
+
+        finger2phalanx2.add(finger2phalanx3);
+        finger2phalanx1.add(finger2phalanx2);
+        group.add(finger2phalanx1);
+
+        finger3phalanx2.add(finger3phalanx3);
+        finger3phalanx1.add(finger3phalanx2);
+        group.add(finger3phalanx1);
+
+        finger4phalanx2.add(finger4phalanx3);
+        finger4phalanx1.add(finger4phalanx2);
+        group.add(finger4phalanx1);
+
+
+        scene.add(group);
+
+
+    },
+    log: util.logger('hand'),
+    err: util.logger('hand', true)
+}
+
 
 $(document).ready(main.main);
