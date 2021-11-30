@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "Servo.h"
 #include "../../inc/tm4c123gh6pm.h"
 
 void PWM0A_Init(uint16_t period, uint16_t duty){
@@ -22,10 +23,6 @@ void PWM0A_Init(uint16_t period, uint16_t duty){
   PWM0_ENABLE_R |= 0x00000001;          // enable PB6/M0PWM0
 }
 
-void PWM0A_Duty(uint16_t duty){
-  PWM0_0_CMPA_R = duty - 1;             // 6) count value when output rises
-}
-
 void PWM0B_Init(uint16_t period, uint16_t duty){
   volatile unsigned long delay;
   SYSCTL_RCGCPWM_R |= 0x01;             // 1) activate PWM0
@@ -46,10 +43,6 @@ void PWM0B_Init(uint16_t period, uint16_t duty){
   PWM0_0_CMPB_R = duty - 1;             // 6) count value when output rises
   PWM0_0_CTL_R |= 0x00000001;           // 7) start PWM0
   PWM0_ENABLE_R |= 0x00000002;          // enable PB7/M0PWM1
-}
-
-void PWM0B_Duty(uint16_t duty){
-  PWM0_0_CMPB_R = duty - 1;             // 6) count value when output rises
 }
 
 void PWM1A_Init(uint16_t period, uint16_t duty){
@@ -94,7 +87,6 @@ void PWM1B_Init(uint16_t period, uint16_t duty){
   PWM0_ENABLE_R |= 0x00000008;
 }
 
-
 void PWM2A_Init(uint16_t period, uint16_t duty){
   volatile unsigned long delay;
   SYSCTL_RCGCPWM_R |= 0x01;
@@ -114,4 +106,42 @@ void PWM2A_Init(uint16_t period, uint16_t duty){
   PWM0_2_CMPA_R = duty - 1;
   PWM0_2_CTL_R |= 0x00000001;
   PWM0_ENABLE_R |= 0x00000010;
+}
+
+void Finger0_Duty(uint16_t angle){
+	uint16_t duty = toDuty(angle);
+  	PWM0_0_CMPA_R = duty - 1;
+}
+
+void Finger1_Duty(uint16_t angle){
+	uint16_t duty = toDuty(angle);
+	PWM0_0_CMPB_R = duty - 1;
+}
+
+void Finger2_Duty(uint16_t angle){
+	uint16_t duty = toDuty(angle);
+	PWM0_1_CMPA_R = duty - 1;
+}
+
+void Finger3_Duty(uint16_t angle){
+	uint16_t duty = toDuty(angle);
+	PWM0_1_CMPB_R = duty - 1;
+}
+
+void Finger4_Duty(uint16_t angle){
+	uint16_t duty = toDuty(angle);
+	PWM0_2_CMPA_R = duty - 1;
+}
+
+void Hand_Init(void){
+	  PWM0A_Init(PERIOD, STARTING_DUTY);
+	  PWM1A_Init(PERIOD, STARTING_DUTY);
+	  PWM1B_Init(PERIOD, STARTING_DUTY);
+	  PWM0B_Init(PERIOD, STARTING_DUTY);
+	  PWM2A_Init(PERIOD, STARTING_DUTY);
+}
+
+uint16_t toDuty (uint16_t angle){
+	uint16_t duty = (7*angle) + 1250;
+	return duty;
 }
