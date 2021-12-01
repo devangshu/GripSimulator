@@ -9,14 +9,11 @@
 #include <PubSubClient.h>
 #include <WiFiUdp.h>
 
-#define DEBUG false
-#define DEBUG_VERBOSE false
+#define WIFI_SSID "21 Resident"
+#define WIFI_PASS "Hookem*2101"
+//#define WIFI_SSID "utexas-iot"
 
-//#define WIFI_SSID "21 Resident"
-//#define WIFI_PASS "Hookem*2101"
-#define WIFI_SSID "utexas-iot"
 #define TIME_SERVER "pool.ntp.org"
-
 #define MQTT_CLIENT_ID "gripsim_445l_client"
 
 #define VIRTUALPIN_COUNT 5
@@ -34,23 +31,6 @@ int bound_integer(int value, int minimum, int maximum) {
 	if (value < minimum) value = minimum;
 	if (value > maximum) value = maximum;
 	return value;
-}
-// esp control
-void esp_boot_delay() {
-	for (uint8_t t = 2; t > 0; t--) {
-		if (DEBUG) {
-			Serial.printf("[boot] wait %d\r\n", t);
-			Serial.flush();
-		}
-		delay(1000);
-	}
-}
-void esp_restart() {
-	if (DEBUG) {
-		Serial.print(F("[boot] resetting..."));
-		Serial.printf("\r\n");
-	}
-	ESP.restart();
 }
 // led control
 int correct_brightness(int brightness) {

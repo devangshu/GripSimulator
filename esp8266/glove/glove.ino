@@ -198,3 +198,19 @@ void reset_monitor() {
 		}
 	}
 }
+void esp_boot_delay() {
+  for (uint8_t t = 2; t > 0; t--) {
+    if (DEBUG) {
+      Serial.printf("[boot] wait %d\r\n", t);
+      Serial.flush();
+    }
+    delay(1000);
+  }
+}
+void esp_restart() {
+  if (DEBUG) {
+    Serial.print(F("[boot] resetting..."));
+    Serial.printf("\r\n");
+  }
+  ESP.restart();
+}
