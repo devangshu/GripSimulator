@@ -36,7 +36,7 @@ uint32_t ADC_Read_Angle(void) {
 	ADC_In5(data);
 	uint32_t step = 2;	// 5
 	//uint32_t adc_in_val = ADC0_InSeq3();
-	uint32_t adc_in_val = data[4];
+	uint32_t adc_in_val = data[1];
 	uint32_t value = adc_in_val / (4096 / 100);
 	value /= step;
 	return step * value;
