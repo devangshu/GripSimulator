@@ -95,7 +95,6 @@ ui = {
             datasets: [{
                 label: 'VP0',
                 backgroundColor: 'rgb(255, 199, 132)',
-
                 data: [config.virtualpin_value_init],
             },
             {
