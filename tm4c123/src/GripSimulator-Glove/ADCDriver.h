@@ -12,7 +12,7 @@
 
 void ADC_Init(uint32_t read_period, void(*task)(uint32_t,uint32_t), int trigger_on_change);
 
-uint32_t ADC_Read(void);
+void ADC_Read(void);
 
 void ADC_Handler(void);
 

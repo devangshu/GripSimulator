@@ -104,13 +104,40 @@ void ESP_Init(uint32_t read_period, uint8_t read_enable) {
 	esp_ready = 1;
 }
 
-uint32_t prev_pin_val = 0;
+uint32_t prev_pin_val[5]= {0};
 void ESP_Receive_Data(uint32_t pin_num, uint32_t pin_val) {
-	if (pin_val > 100) pin_val = 100;
-	//	if (pin_val < 0) pin_val = 0;
-	if (prev_pin_val >= 70 && pin_val <= 2) return;
-	prev_pin_val = pin_val;
-	Finger0_Duty(2 * (100 - pin_val));
+
+    /*
+     * UNTESTED
+     */
+    if (pin_val > 100) pin_val = 100;
+    if (prev_pin_val[pin_num] >= 70 && pin_val <= 2) return;
+    prev_pin_val[pin_num] = pin_val;
+
+    switch(pin_num){
+        case 0:
+            Finger0_Duty(2 * (100 - pin_val));
+            break;
+
+        case 1:
+            Finger1_Duty(2 * (100 - pin_val));
+            break;
+
+        case 2:
+            Finger2_Duty(2 * (100 - pin_val));
+            break;
+
+        case 3:
+            Finger3_Duty(2 * (100 - pin_val));
+            break;
+
+        case 4:
+            Finger4_Duty(2 * (100 - pin_val));
+            break;
+    }
+
+
+
 }
 
 void ESP_Send_Data(uint32_t pin_num, uint32_t pin_val) {
