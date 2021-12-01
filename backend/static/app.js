@@ -10,7 +10,7 @@ var finger0phalanx1, finger0phalanx2, finger0phalanx3, finger1phalanx1, finger1p
 var vp0, vp1, vp2, vp3, vp4, vp5;
 var vpvals = new Array();
 var x1 = x2 = x3 = .01;
-
+var spin = 1; //DEBUG CONSOLE PONIT TO TUrn ON AND OFF THE SPINS 
 
 
 ui = {
@@ -95,7 +95,6 @@ ui = {
             datasets: [{
                 label: 'VP0',
                 backgroundColor: 'rgb(255, 199, 132)',
-
                 data: [config.virtualpin_value_init],
             },
             {
@@ -366,34 +365,34 @@ hand = {
             requestAnimationFrame(animate);
             //TODO: Update each phalanx here 
 
-            var val0 = ( (vpvals[0] - 30) /100) * 1.5;
+            var val0 = ( Math.abs(vpvals[0]/ (100))) * 1.4;
             finger0phalanx1.rotation.x = val0;
             finger0phalanx2.rotation.x = val0;
 
-            var val1 = (vpvals[1]/100) * 1.5;
+            var val1 = ( Math.abs(vpvals[1]/ (100))) * 1.4;
             finger1phalanx1.rotation.x = val1;
             finger1phalanx2.rotation.x = val1;
             finger1phalanx3.rotation.x = val1;
 
-            var val2 = ( Math.abs(vpvals[0]/ (100))) * 1.4;
-            
+            var val2 = ( Math.abs(vpvals[2]/ (100))) * 1.4;
             finger2phalanx1.rotation.x = val2;
             finger2phalanx2.rotation.x = val2;
             finger2phalanx3.rotation.x = val2;
 
-            var val3 = (vpvals[3]/100) * 1.5;
+            var val3 = ( Math.abs(vpvals[3]/ (100))) * 1.4;
             finger3phalanx1.rotation.x = val3;
             finger3phalanx2.rotation.x = val3;
             finger3phalanx3.rotation.x = val3;
 
-            var val4 = (vpvals[4]/100) * 1.5;
+            var val4 = ( Math.abs(vpvals[4]/ (100))) * 1.4;
             finger4phalanx1.rotation.x = val4;
             finger4phalanx2.rotation.x = val4;
             finger4phalanx3.rotation.x = val4;
 
+            if(spin == 1){
+                group.rotation.y += 0.01;
+            }
             // group.rotation.y += 0.01;
-            group.rotation.y += 0.01;
-
 
             renderer.render(scene, camera);
         };
