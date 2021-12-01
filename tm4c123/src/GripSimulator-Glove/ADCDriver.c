@@ -36,7 +36,7 @@ static void populate_LUT(void){
 }
 void ADC_Read_Angle(void) {
 	ADC_In5(data);
-	uint32_t step = 2;	// 5
+	uint32_t step = 5;	// 2
 	int i;
 	for(i = 0; i < 5; i++){
 	    uint32_t value = data[i] / (4096 / 100);

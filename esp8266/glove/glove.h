@@ -6,7 +6,7 @@
 #define DEBUG true
 #define DEBUG_VERBOSE true
 
-//#define WIFI_PASS "8372681759362047"
+#define WIFI_PASS "8372681759362047"
 
 #define API_URL "mqtt.anuv.me"	// "test.mosquitto.org"
 #define API_PORT 1883
