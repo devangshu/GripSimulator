@@ -10,10 +10,12 @@
 
 /* module fields */
 
-uint32_t ADC_Value;
+//uint32_t ADC_Value;
 void (*ADC_Task)(uint32_t, uint32_t);
 int ADC_Trigger_Change;
 uint32_t data[5];
+uint32_t angle[5];
+uint32_t old_angle[5] = {0};
 
 /* module internal functions */
 uint32_t angle_LUT[100];
@@ -32,31 +34,56 @@ static void populate_LUT(void){
 		value -= step_size2;
 	}
 }
-uint32_t ADC_Read_Angle(void) {
+void ADC_Read_Angle(void) {
 	ADC_In5(data);
 	uint32_t step = 2;	// 5
+	int i;
+	for(i = 0; i < 5; i++){
+	    uint32_t value = data[i] / (4096 / 100);
+	    value /= step;
+	    angle[i] = step * value;
+	}
+	/*
+	 * Delete after confirming above code works
+	 */
 	//uint32_t adc_in_val = ADC0_InSeq3();
-	uint32_t adc_in_val = data[1];
-	uint32_t value = adc_in_val / (4096 / 100);
-	value /= step;
-	return step * value;
+//	uint32_t adc_in_val = data[1];
+//	uint32_t value = adc_in_val / (4096 / 100);
+//	value /= step;
+//	return step * value;
 }
 
 void ADC_Handler(void) {
-    uint32_t old_adc_value = ADC_Value;
-	uint32_t new_adc_value = ADC_Read_Angle();
+	ADC_Read_Angle();
+	int i;
+	for(i = 0; i < 5; i++){
+	    uint32_t new_adc_value = angle[i];
+	    uint32_t old_adc_value = old_angle[i];
+	    uint32_t adc_val_avg = 0;
+	    if(new_adc_value != old_adc_value || ADC_Trigger_Change == 0){
+	        adc_val_avg = (old_adc_value + new_adc_value) / 2;
+	        old_angle[i] = angle[i];
+	        (*ADC_Task)(i, adc_val_avg); //index should correspond to virtual pin
+	    }
+
+	}
+    /*
+     * Delete after confirming above code works
+     */
+	/*
 	uint32_t adc_val_avg = 0;
 	if (new_adc_value != ADC_Value || ADC_Trigger_Change == 0) {
 		ADC_Value = new_adc_value;
 		adc_val_avg = (old_adc_value + new_adc_value) / 2;
 		(*ADC_Task)(VP_NUM, adc_val_avg);
 	}
+	*/
 }
 
 /* module external methods */
 
 void ADC_Init(uint32_t read_period, void (*task)(uint32_t, uint32_t), int trigger_on_change) {
-	ADC_Value = 0;
+	//ADC_Value = 0;
 	ADC_Task = task;
 	ADC_Trigger_Change = trigger_on_change;
 	// ADC0_InitSWTriggerSeq3_Ch9();  // PE4
