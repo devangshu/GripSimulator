@@ -5,9 +5,10 @@
 var main, ws, ui, phalanx1finger1;
 var myChart, chartHolder, data;
 var count = 0;
-var finger1phalanx1, finger1phalanx2, finger1phalanx3, finger2phalanx1, finger2phalanx2, finger2phalanx3, finger3phalanx1, finger3phalanx2, finger3phalanx3, finger4phalanx1, finger4phalanx2, finger4phalanx3;
+var finger0phalanx1, finger0phalanx2, finger0phalanx3, finger1phalanx1, finger1phalanx2, finger1phalanx3, finger2phalanx1, finger2phalanx2, finger2phalanx3, finger3phalanx1, finger3phalanx2, finger3phalanx3, finger4phalanx1, finger4phalanx2, finger4phalanx3;
 
-
+var vp0, vp1, vp2, vp3, vp4, vp5;
+var vpvals = new Array();
 var x1 = x2 = x3 = .01;
 
 
@@ -22,9 +23,23 @@ ui = {
         if(count >= 5){
             myChart.data.labels.push("");
             myChart.data.datasets[vpin_num].data.push(vpin_val);
-            myChart.update();
+            myChart.update('none');
         }
         //TODO: Update this to be derivative based (for jitter calculation)
+        // if(vpin_num == 0){
+        //     vp0 = vpin_val;
+        // } else if(vpin_num == 1){
+        //     vp1 = vpin_val;
+        // } else if(vpin_num == 2){
+        //     vp2 = vpin_val;
+        // } else if(vpin_num == 3){
+        //     vp3 = vpin_val;
+        // } else if(vpin_num == 4){
+        //     vp4 = vpin_val;
+        // }  else if(vpin_num == 5){
+        //     vp5 = vpin_val;
+        // } 
+
         count++;
 
     },
@@ -150,8 +165,11 @@ ws = {
             }
         });
         ws.bind('vpin_values', value_map => {
+            var i = 0;
             for (var v in value_map) {
                 ui.update_virtual_pin(value_map[v]._id, value_map[v].value);
+                vpvals[i] = value_map[v].value;
+                i++; 
             }
         });
         for (var v = 0; v < config.virtualpin_count; v++) {
@@ -274,6 +292,7 @@ main = {
             main.virtual_pins[vp_num] = vp_val;
             // update ui elements
             ui.update_virtual_pin(vp_num, vp_val);
+            vpvals[vp_num] = vp_val;       
         }
     },
     main: _ => {
@@ -347,21 +366,30 @@ hand = {
             requestAnimationFrame(animate);
             //TODO: Update each phalanx here 
 
-            finger1phalanx1.rotation.x = x1;
-            finger1phalanx2.rotation.x = x2;
-            finger1phalanx3.rotation.x = x3;
+            var val0 = ( (vpvals[0] - 30) /100) * 1.5;
+            finger0phalanx1.rotation.x = val0;
+            finger0phalanx2.rotation.x = val0;
 
-            finger2phalanx1.rotation.x = x1;
-            finger2phalanx2.rotation.x = x2;
-            finger2phalanx3.rotation.x = x3;
+            var val1 = (vpvals[1]/100) * 1.5;
+            finger1phalanx1.rotation.x = val1;
+            finger1phalanx2.rotation.x = val1;
+            finger1phalanx3.rotation.x = val1;
 
-            finger3phalanx1.rotation.x = x1;
-            finger3phalanx2.rotation.x = x2;
-            finger3phalanx3.rotation.x = x3;
+            var val2 = ( Math.abs(vpvals[0]/ (100))) * 1.4;
+            
+            finger2phalanx1.rotation.x = val2;
+            finger2phalanx2.rotation.x = val2;
+            finger2phalanx3.rotation.x = val2;
 
-            finger4phalanx1.rotation.x = x1;
-            finger4phalanx2.rotation.x = x2;
-            finger4phalanx3.rotation.x = x3;
+            var val3 = (vpvals[3]/100) * 1.5;
+            finger3phalanx1.rotation.x = val3;
+            finger3phalanx2.rotation.x = val3;
+            finger3phalanx3.rotation.x = val3;
+
+            var val4 = (vpvals[4]/100) * 1.5;
+            finger4phalanx1.rotation.x = val4;
+            finger4phalanx2.rotation.x = val4;
+            finger4phalanx3.rotation.x = val4;
 
             // group.rotation.y += 0.01;
             group.rotation.y += 0.01;
@@ -381,9 +409,15 @@ hand = {
 
         const palmGeometry = new THREE.BoxGeometry(10, 10, 1);
         const fingerGeometry = new THREE.BoxGeometry(1, 5, 1);
+        const thumbGeometry = new THREE.BoxGeometry(1, 3, 1);
         const palmMaterial = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
         const fingerMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const palm = new THREE.Mesh(palmGeometry, palmMaterial);
+
+        //thumb
+        finger0phalanx1 = new THREE.Mesh(thumbGeometry, fingerMaterial);
+        finger0phalanx2 = new THREE.Mesh(thumbGeometry, fingerMaterial);
+        // finger1phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
 
         //Index
         finger1phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
@@ -404,6 +438,12 @@ hand = {
         finger4phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger4phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger4phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
+
+        finger0phalanx1.position.x = -6;
+        finger0phalanx1.position.y = 2;
+        finger0phalanx1.position.z = 0;
+        finger0phalanx1.rotation.z = 1;
+        finger0phalanx2.position.y = 3;
 
 
         finger1phalanx1.position.x = -5;
@@ -435,6 +475,9 @@ hand = {
         fingerGeometry.computeVertexNormals();
         
         group.add(palm);
+
+        finger0phalanx1.add(finger0phalanx2);
+        group.add(finger0phalanx1);
         
         finger1phalanx2.add(finger1phalanx3);
         finger1phalanx1.add(finger1phalanx2);
