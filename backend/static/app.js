@@ -3,8 +3,8 @@
 
 
 var main, ws, ui, phalanx1finger1;
-var myChart, data;
-
+var myChart, chartHolder, data;
+var count = 0;
 var finger1phalanx1, finger1phalanx2, finger1phalanx3, finger2phalanx1, finger2phalanx2, finger2phalanx3, finger3phalanx1, finger3phalanx2, finger3phalanx3, finger4phalanx1, finger4phalanx2, finger4phalanx3;
 
 
@@ -18,9 +18,15 @@ ui = {
         ui.log(`updating ui for vp${vpin_num}: ${vpin_val}`);
         document.querySelector(`#vp_output #vp_pin_${vpin_num} .vp_pin_code_output`).innerHTML = (`${vpin_val}`);
         // TODO: Update graph here
-        data.datasets[vpin_num].data.push(vpin_val);
+        ui.log(myChart);
+        if(count >= 5){
+            myChart.data.labels.push("");
+            myChart.data.datasets[vpin_num].data.push(vpin_val);
+            myChart.update();
+        }
         //TODO: Update this to be derivative based (for jitter calculation)
-        myChart.update();
+        count++;
+
     },
     show_login_error_message: _ => {
         document.querySelector("#main_login_form #error_msg").style.opacity = "0.9";
@@ -98,7 +104,6 @@ ui = {
             {
                 label: 'VP4',
                 backgroundColor: 'rgb(215, 189, 132)',
-
                 data: [config.virtualpin_value_init],
             }
             ]
@@ -115,7 +120,6 @@ ui = {
             document.getElementById('myChart'),
             chartConfig
         );
-
         var vp_output_html = "";
         for (var v = 0; v < config.virtualpin_count; v++) {
             vp_output_html += `<div id="vp_pin_${v}">VP${v}&nbsp;&nbsp;=&nbsp;&nbsp;<code class="vp_pin_code_output">${config.virtualpin_value_init}</code></div>`;
