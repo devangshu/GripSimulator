@@ -3,8 +3,8 @@
 #include "Glove.h"
 #include "Model.h"
 
-//#define GLOVE
-#define MODEL
+#define GLOVE
+// #define MODEL
 
 int main(void) {
 

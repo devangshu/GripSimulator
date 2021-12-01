@@ -2,6 +2,13 @@
 #include "Servo.h"
 #include "../../inc/tm4c123gh6pm.h"
 
+/*
+ * PWM Assignments we are using:
+ * 		PB6
+ * 		PB7
+ * 		PB4
+ * 		PB5
+ */
 void PWM0A_Init(uint16_t period, uint16_t duty){
   SYSCTL_RCGCPWM_R |= 0x01;             // 1) activate PWM0
   SYSCTL_RCGCGPIO_R |= 0x02;            // 2) activate port B
@@ -96,8 +103,8 @@ void PWM0G_Init(uint16_t period, uint16_t duty){
   GPIO_PORTD_PCTL_R |= 0x00000004;
   GPIO_PORTD_AMSEL_R &= ~0x01;          // disable analog functionality on PD0
   GPIO_PORTD_DEN_R |= 0x01;             // enable digital I/O on PD0
-  SYSCTL_RCC_R = 0x00100000 |
-      (SYSCTL_RCC_R & (~0x00010000));
+  SYSCTL_RCC_R = 0x00100000 |           // 3) use PWM divider
+      (SYSCTL_RCC_R & (~0x000E0000));   //    configure for /2 divider
   PWM0_3_CTL_R = 0;                     // 4) re-loading down-counting mode
   PWM0_3_GENA_R = 0xC8;                 // low on LOAD, high on CMPA down
   // PB6 goes low on LOAD

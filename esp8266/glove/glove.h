@@ -3,7 +3,7 @@
 #ifndef __GS_GLOVE_H__
 #define __GS_GLOVE_H__
 
-//#define WIFI_PASS "7066417699695327"
+#define WIFI_PASS "8372681759362047"
 
 #define API_URL "mqtt.anuv.me"	// "test.mosquitto.org"
 #define API_PORT 1883

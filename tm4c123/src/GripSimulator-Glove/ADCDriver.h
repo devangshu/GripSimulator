@@ -20,7 +20,4 @@ void ADC_Init_5Chan(void);
 
 void ADC_In5(uint32_t data[5]);
 
-void ADC0_InitSWTriggerSeq3_test(unsigned char channelNum);
-
-
 #endif

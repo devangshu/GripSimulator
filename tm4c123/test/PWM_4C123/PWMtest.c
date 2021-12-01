@@ -33,6 +33,11 @@ void WaitForInterrupt(void);  // low power mode
 int main(void){
   PLL_Init(Bus80MHz);               // bus clock at 80 MHz
   Hand_Init();
+  Finger0_Duty(0);
+  Finger1_Duty(20);
+  Finger2_Duty(40);
+  Finger3_Duty(60);
+  Finger4_Duty(80);
 
   while(1){
     //WaitForInterrupt();
@@ -47,10 +52,12 @@ int main(void){
           for(uint32_t j = 0; j < 50000; j++){}
       }
       */
-	  Finger4_Duty(0);
+	  /*
+	  Finger0_Duty(0);
 	  for(uint32_t j = 0; j < 10000000; j++){}
-	  Finger4_Duty(180);
+	  Finger0_Duty(180);
 	  for(uint32_t j = 0; j < 10000000; j++){}
+	  */
   }
 
 }

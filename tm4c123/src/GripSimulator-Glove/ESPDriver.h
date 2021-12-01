@@ -11,7 +11,6 @@
 #include "esp8266Lab4.h"
 
 #include "TimerDriver.h"
-#include "Servo.h"
 
 
 void ESP_Init(uint32_t read_period, uint8_t read_enable);

@@ -133,6 +133,7 @@ void mqtt_handler(char* topic, byte* payload, unsigned int length) {
 	}
 	if (memcmp(topic, VIRTUALPIN_TOPIC, VIRTUALPIN_TOPIC_LEN) == 0) {
 		int vp_num = atoi(topic + VIRTUALPIN_TOPIC_LEN + 1);
+//    Serial.println((char*)payload);
 		int vp_val = atoi((char*)payload);
 		mqtt_receive_virtualpin_update(vp_num, vp_val);
 	}
@@ -144,7 +145,8 @@ void mqtt_update(char* topic, char* message) {
 }
 void mqtt_receive_virtualpin_update(int vp_num, int vp_val) {
 	if (DEBUG) Serial.printf("[mqtt] received virtual pin update: VP%d = %d\r\n", vp_num, vp_val);
-	Serial.printf("%d=%d\n", vp_num, vp_val);
+//  Serial.println(vp_val);
+	Serial.printf("%d=%05d\n", vp_num, vp_val);
 	if (DEBUG) Serial.printf("\r\n");
 }
 

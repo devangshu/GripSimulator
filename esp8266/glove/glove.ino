@@ -171,7 +171,7 @@ void serial_monitor_input(char* msgbuff, int length) {
 		msgbuff[2] = '\0';
 		int virtualpin_num = atoi(msgbuff);
 		int virtualpin_val = atoi(msgbuff + 3);
-		if (DEBUG) Serial.printf("[serial] forwarding update VP%d: %d\r\n", virtualpin_num, virtualpin_val);
+//		if (DEBUG) Serial.printf("[serial] forwarding update VP%d: %d\r\n", virtualpin_num, virtualpin_val);
 		mqtt_update_virtualpin(virtualpin_num, virtualpin_val);
 	}
 }
