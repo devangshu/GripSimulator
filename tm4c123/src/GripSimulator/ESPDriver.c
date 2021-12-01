@@ -63,7 +63,11 @@ void ESP_to_TM4C_READ(void) {
 		// Rip the 3 fields out of the CSV data. The sequence of data from the 8266 is:
 		// Pin #, Integer Value, Float Value.
 		strcpy(Pin_Number, strtok(serial_buf, "="));
+//		Pin_Number[0] = serial_buf[0];
+//		Pin_Number[1] = '\0';
 		strcpy(Pin_Integer, strtok(NULL, "="));	 // Integer value that is determined by the Blynk App
+//		strncpy(Pin_Integer, serial_buf + 2, 5);
+//		Pin_Integer[5] = '\0';
 		pin_num = atoi(Pin_Number);				 // Need to convert ASCII to integer
 		pin_int = atoi(Pin_Integer);
 
@@ -71,9 +75,9 @@ void ESP_to_TM4C_READ(void) {
 
 #ifdef DEBUG
 		UART_OutString("vp");
-		UART_OutString(Pin_Number);
+		UART_OutUDec(pin_num);
 		UART_OutString("=");
-		UART_OutString(Pin_Integer);
+		UART_OutUDec(pin_int);
 		UART_OutString("\n\r");
 #endif
 	}
@@ -90,6 +94,7 @@ void ESP_Init(uint32_t read_period, uint8_t read_enable) {
 	ESP8266_Init();	  // Enable ESP8266 Serial Port
 	ESP8266_Reset();  // Reset the WiFi module
 	//ESP8266_SetupWiFi();  // Setup communications to MQTT Server
+	Hand_Init();
 
 	if (read_enable) {
 		// check for receive data from ESP every 10ms
@@ -99,48 +104,13 @@ void ESP_Init(uint32_t read_period, uint8_t read_enable) {
 	esp_ready = 1;
 }
 
+uint32_t prev_pin_val = 0;
 void ESP_Receive_Data(uint32_t pin_num, uint32_t pin_val) {
-	/*
-	if (pin_num == 0x01) {
-		//LED = pin_int;
-		//PortF_Output(LED<<2); // Blue LED
-
-		// Parse incoming data
-
-	} else if (pin_num == 0x02) {
-		if (vp2val == 1 && pin_int == 0) {
-			Switches_Handler(5);
-			vp2val = 0;
-		}
-		if (pin_int == 1) vp2val = 1;
-	} else if (pin_num == 0x03) {
-		if (vp3val == 1 && pin_int == 0) {
-			Switches_Handler(4);
-			vp3val = 0;
-		}
-		if (pin_int == 1) vp3val = 1;
-	} else if (pin_num == 0x04) {
-		if (vp4val == 1 && pin_int == 0) {
-			Switches_Handler(3);
-			vp4val = 0;
-		}
-		if (pin_int == 1) vp4val = 1;
-	} else if (pin_num == 0x05) {
-		if (vp5val == 1 && pin_int == 0) {
-			Switches_Handler(2);
-			vp5val = 0;
-		}
-		if (pin_int == 1) vp5val = 1;
-	} else if (pin_num == 0x06) {
-		if (vp6val == 1 && pin_int == 0) {
-			Switches_Handler(1);
-			vp6val = 0;
-		}
-		if (pin_int == 1) vp6val = 1;
-	} else if (pin_num == 555 || (pin_num >= 550 && pin_num <= 560)) {
-		DrawHands(pin_int + 1, atoi(Pin_Float));
-	}
-	*/
+	if (pin_val > 100) pin_val = 100;
+	//	if (pin_val < 0) pin_val = 0;
+	if (prev_pin_val >= 70 && pin_val <= 2) return;
+	prev_pin_val = pin_val;
+	Finger0_Duty(2 * (100 - pin_val));
 }
 
 void ESP_Send_Data(uint32_t pin_num, uint32_t pin_val) {

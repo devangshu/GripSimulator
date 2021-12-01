@@ -47,9 +47,9 @@ int main(void){
           for(uint32_t j = 0; j < 50000; j++){}
       }
       */
-	  Finger4_Duty(0);
+	  Finger0_Duty(0);
 	  for(uint32_t j = 0; j < 10000000; j++){}
-	  Finger4_Duty(180);
+	  Finger0_Duty(180);
 	  for(uint32_t j = 0; j < 10000000; j++){}
   }
 
