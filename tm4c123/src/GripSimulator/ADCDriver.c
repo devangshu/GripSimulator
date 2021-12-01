@@ -17,17 +17,21 @@ int ADC_Trigger_Change;
 /* module internal functions */
 
 uint32_t ADC_Read_Angle(void) {
-	uint32_t step = 5;	// 1
+	uint32_t step = 2;	// 5
+	uint32_t adc_in_val = ADC0_InSeq3();
 	uint32_t value = ADC0_InSeq3() / (4096 / 100);
 	value /= step;
 	return step * value;
 }
 
 void ADC_Handler(void) {
+    uint32_t old_adc_value = ADC_Value;
 	uint32_t new_adc_value = ADC_Read_Angle();
+	uint32_t adc_val_avg = 0;
 	if (new_adc_value != ADC_Value || ADC_Trigger_Change == 0) {
 		ADC_Value = new_adc_value;
-		(*ADC_Task)(VP_NUM, ADC_Value);
+		adc_val_avg = (old_adc_value + new_adc_value) / 2;
+		(*ADC_Task)(VP_NUM, adc_val_avg);
 	}
 }
 
