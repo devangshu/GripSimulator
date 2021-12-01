@@ -1,13 +1,20 @@
 /* GRIP SIMULATOR */
 // web client
 
+
 var main, ws, ui;
+var myChart, data;
+
+
 
 ui = {
     colors: {},
     update_virtual_pin: (vpin_num, vpin_val) => {
         ui.log(`updating ui for vp${vpin_num}: ${vpin_val}`);
         document.querySelector(`#vp_output #vp_pin_${vpin_num} .vp_pin_code_output`).innerHTML = (`${vpin_val}`);
+        // TODO: Update graph here
+        data.datasets[vpin_num].data.push(vpin_val);
+        myChart.update();
     },
     show_login_error_message: _ => {
         document.querySelector("#main_login_form #error_msg").style.opacity = "0.9";
@@ -52,10 +59,63 @@ ui = {
             document.querySelector("#main_content_main").style.display = "block";
         }, 10);
         document.querySelector("#main_app_view #vp_output").innerHTML = "";
+        const labels = [
+            'Time',
+        ];
+    
+        data = {
+            labels: labels,
+            datasets: [{
+                label: 'VP0',
+                backgroundColor: 'rgb(255, 199, 132)',
+        
+                data: [config.virtualpin_value_init],
+            },
+            {
+                label: 'VP1',
+                backgroundColor: 'rgb(155, 29, 132)',
+        
+                data: [config.virtualpin_value_init],
+            },
+            {
+                label: 'VP2',
+                backgroundColor: 'rgb(25, 89, 132)',
+        
+                data: [config.virtualpin_value_init],
+            },
+            {
+                label: 'VP3',
+                backgroundColor: 'rgb(235, 159, 132)',
+        
+                data: [config.virtualpin_value_init],
+            },
+            {
+                label: 'VP4',
+                backgroundColor: 'rgb(215, 189, 132)',
+        
+                data: [config.virtualpin_value_init],
+            }
+            ]
+        };
+        
+        const chartConfig = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: false,
+            }
+        };
+        myChart = new Chart(
+            document.getElementById('myChart'),
+            chartConfig
+        );
+
         var vp_output_html = "";
         for (var v = 0; v < config.virtualpin_count; v++) {
             vp_output_html += `<div id="vp_pin_${v}">VP${v}&nbsp;&nbsp;=&nbsp;&nbsp;<code class="vp_pin_code_output">${config.virtualpin_value_init}</code></div>`;
         }
+        //TODO: maybe update stuff here
+
         document.querySelector("#main_app_view #vp_output").innerHTML = vp_output_html;
         if (resolve) resolve();
     },

@@ -12,8 +12,9 @@ int main(void) {
     return main_glove();
 #endif
 
-#ifdef GLOVE
+#ifdef MODEL
     return main_model();
 #endif
 
 }
+

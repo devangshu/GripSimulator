@@ -13,6 +13,8 @@
         "nodemon": "^2.0.14"
     },
     "dependencies": {
+        "chart.js": "^3.6.0",
+        "chartjs-node-canvas": "^4.1.5",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
         "mqtt": "^4.2.8",

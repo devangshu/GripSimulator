@@ -13,6 +13,8 @@ const websocket = require("ws");
 const express = require("express");
 const rn = require('random-number');
 const readline = require("readline");
+const Chart = require("chart.js");
+
 
 
 /* ENVIRONMENT */
