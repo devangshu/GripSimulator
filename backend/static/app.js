@@ -20,7 +20,7 @@ ui = {
         document.querySelector(`#vp_output #vp_pin_${vpin_num} .vp_pin_code_output`).innerHTML = (`${vpin_val}`);
         // TODO: Update graph here
         ui.log(myChart);
-        if(count >= 5){
+        if (count >= 5) {
             myChart.data.labels.push("");
             myChart.data.datasets[vpin_num].data.push(vpin_val);
             myChart.update('none');
@@ -168,7 +168,7 @@ ws = {
             for (var v in value_map) {
                 ui.update_virtual_pin(value_map[v]._id, value_map[v].value);
                 vpvals[i] = value_map[v].value;
-                i++; 
+                i++;
             }
         });
         for (var v = 0; v < config.virtualpin_count; v++) {
@@ -291,7 +291,10 @@ main = {
             main.virtual_pins[vp_num] = vp_val;
             // update ui elements
             ui.update_virtual_pin(vp_num, vp_val);
-            vpvals[vp_num] = vp_val;       
+            vpvals[vp_num] = vp_val;
+        }
+        if (vp_num == 3) {
+            main.receive_virtual_pin_update(4, vp_val, vp_val_buffer);
         }
     },
     main: _ => {
@@ -365,31 +368,31 @@ hand = {
             requestAnimationFrame(animate);
             //TODO: Update each phalanx here 
 
-            var val0 = ( Math.abs(vpvals[0]/ (100))) * 1.4;
+            var val0 = (Math.abs(vpvals[0] / (100))) * 1.4;
             finger0phalanx1.rotation.x = val0;
             finger0phalanx2.rotation.x = val0;
 
-            var val1 = ( Math.abs(vpvals[1]/ (100))) * 1.4;
+            var val1 = (Math.abs(vpvals[1] / (100))) * 1.4;
             finger1phalanx1.rotation.x = val1;
             finger1phalanx2.rotation.x = val1;
             finger1phalanx3.rotation.x = val1;
 
-            var val2 = ( Math.abs(vpvals[2]/ (100))) * 1.4;
+            var val2 = (Math.abs(vpvals[2] / (100))) * 1.4;
             finger2phalanx1.rotation.x = val2;
             finger2phalanx2.rotation.x = val2;
             finger2phalanx3.rotation.x = val2;
 
-            var val3 = ( Math.abs(vpvals[3]/ (100))) * 1.4;
+            var val3 = (Math.abs(vpvals[3] / (100))) * 1.4;
             finger3phalanx1.rotation.x = val3;
             finger3phalanx2.rotation.x = val3;
             finger3phalanx3.rotation.x = val3;
 
-            var val4 = ( Math.abs(vpvals[4]/ (100))) * 1.4;
+            var val4 = (Math.abs(vpvals[4] / (100))) * 1.4;
             finger4phalanx1.rotation.x = val4;
             finger4phalanx2.rotation.x = val4;
             finger4phalanx3.rotation.x = val4;
 
-            if(spin == 1){
+            if (spin == 1) {
                 group.rotation.y += 0.01;
             }
             // group.rotation.y += 0.01;
@@ -422,12 +425,12 @@ hand = {
         finger1phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger1phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger1phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
-        
+
         //Middle
         finger2phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger2phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger2phalanx3 = new THREE.Mesh(fingerGeometry, fingerMaterial);
-        
+
         //Ring? Wow i dnot know the names of the fingers
         finger3phalanx1 = new THREE.Mesh(fingerGeometry, fingerMaterial);
         finger3phalanx2 = new THREE.Mesh(fingerGeometry, fingerMaterial);
@@ -472,12 +475,12 @@ hand = {
 
 
         fingerGeometry.computeVertexNormals();
-        
+
         group.add(palm);
 
         finger0phalanx1.add(finger0phalanx2);
         group.add(finger0phalanx1);
-        
+
         finger1phalanx2.add(finger1phalanx3);
         finger1phalanx1.add(finger1phalanx2);
         group.add(finger1phalanx1);
