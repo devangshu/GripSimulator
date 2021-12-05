@@ -1,6 +1,7 @@
 /* GRIP SIMULATOR */
 // web client
 
+var timer0;
 
 var main, ws, ui, phalanx1finger1;
 var myChart, chartHolder, data;
@@ -134,6 +135,7 @@ ui = {
             document.getElementById('myChart'),
             chartConfig
         );
+        myChart.resize(900,900);
         var vp_output_html = "";
         for (var v = 0; v < config.virtualpin_count; v++) {
             vp_output_html += `<div id="vp_pin_${v}">VP${v}&nbsp;&nbsp;=&nbsp;&nbsp;<code class="vp_pin_code_output">${config.virtualpin_value_init}</code></div>`;
@@ -394,7 +396,15 @@ hand = {
             }
             // group.rotation.y += 0.01;
 
+            if(timer0 >= 600){
+                myChart.clear();
+            }
+            
             renderer.render(scene, camera);
+            
+            timer0++;
+
+
         };
 
         animate();
