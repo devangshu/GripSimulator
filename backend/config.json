@@ -2,7 +2,7 @@
     "ws_port": 3027,
     "http_port": 3026,
     "authors": "Anuv Gupta, Pulkit Mahajan, Devangshu Goswami, Stefanie Thompson",
-    "secret": "994dc8440a6b8c0627ca035f44b39d7a8eeddc76084b49d797976e32eaac3dfd",
+    "secret": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
     "virtualpin_count": 5,
     "virtualpin_value_init": 0,
     "device_ids": ["glove", "model"],
