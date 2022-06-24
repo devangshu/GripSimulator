@@ -20,8 +20,8 @@ const readline = require("readline");
 global.args = process.argv.slice(2);
 global.env = global.args[0] == "prod" ? "prod" : "dev";
 global.config = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8', flag: 'r' }));
-global.http_port = global.env == "dev" ? 8000 : global.config.http_port;
-global.ws_port = global.env == "dev" ? 8080 : global.config.ws_port;
+global.http_port = parseInt(process.env.hasOwnProperty('PORT') ? process.env.PORT : (global.env == "dev" ? 8000 : global.config.http_port));
+global.ws_port = parseInt(process.env.hasOwnProperty('PORT_SCK') ? process.env.PORT_SCK : (global.env == "dev" ? 8080 : global.config.ws_port));
 
 /* MODULES */
 var utils, db, web, ws, mq, cli, main;
